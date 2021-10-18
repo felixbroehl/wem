@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 1 Aufgabe 5</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+        body {
+            margin: 0;
+            font-family: Verdana;
+            background-color: #ebeae6;
+        }
+
+        header {
+            padding: 8px;
+            background-color: #363636;
+            color: #fff;
+        }
+
+        header ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        header ul li {
+            list-style: none;
+            margin: 0 10px;
+        }
+
+        header ul li a, header ul li a:link, header ul li a:active, header ul li a:hover, header ul li a:visited {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Roboto Mono', sans-serif;
+            font-size: 1.6em;
+            font-weight: 600;
+            grid-column: 1 / span 2;
+        }
+
+        #book-cover {
+            width: 70%;
+        }
+
+        .button {
+            text-decoration: none;
+            color: #fff;
+            background-color: #f88e36;
+            text-transform: uppercase;
+            border-radius: 5px;
+            padding: 5px 50px;
+            box-sizing: border-box;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9em;
+        }
+
+        .button.full-size {
+            padding-left: 130px;
+            padding-right: 130px;
+        }
+
+        footer {
+            background-color: #011926;
+            color: #fff;
+            text-align: center;
+
+            padding: 50px 0;
+        }
+
+        #container {
+            width: 80%;
+            margin: 0 auto;
+            max-width: 1024px;
+            display: grid;
+            grid-template: 65px 1fr / 45% 55%;
+        }
+
+        .right {
+            text-align: center;
+        }
+
+        .left img {
+            border: 1px solid #363636;
+            border-radius: 10px;
+            max-width: 320px;
+        }
+
+        .right p {
+            margin: 2.5em 0;
+        }
+
+        .right {
+            padding-top: 25px !important;
+        }
+
+        .left {
+            padding-bottom: 16px !important;
+        }
+
+        @media (max-width: 500px) {
+            #container {
+                grid-template: 105px 1fr 1fr / 100%;
+            }
+
+            .left img {
+                max-width: 100%;
+                width: 100% !important;
+            }
+
+            .right {
+                grid-row: 3;
+            }
+
+            .button.full-size {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <ul>
+        <li><a href="#">The book series</a></li>
+        <li><a href="#">Testimonials</a></li>
+        <li><a href="#">The Author</a></li>
+        <li><a href="#">Free resources</a></li>
+    </ul>
+</header>
+<div id="container">
+    <h1>You dont know JavaScript</h1>
+    <div class="left">
+        <img id="book-cover" src="https://kaul.inf.h-brs.de/wem/assets/img/landing-img.png" />
+    </div>
+    <div class="right">
+        <p>Don't just drift through javascript</p>
+        <p>Understand how Javascript works</p>
+        <p>Start your journey through the bumpy side of Javascript</p>
+        <p>
+            <a href="#" class="button">Order your copy now</a>
+        </p>
+    </div>
+</div>
+<footer>
+    <p>The first ebook in the book series is absolutely free.</p>
+    <p><a href="#" class="button full-size">Find out more about this offer</a></p>
+</footer>
+</body>
+</html>

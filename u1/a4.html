@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 1 Aufgabe 4</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+        body {
+            margin: 0;
+            background-color: #b2d6d1;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        header {
+            text-align: center;
+            padding: 18px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #container {
+            background-color: #fafafa;
+            padding: 32px;
+            border-radius: 5px;
+            width: 80%;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        .centered {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .grid {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .grid > div {
+            width: 50%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .label {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Survey Form</h1>
+    </header>
+    <div id="container">
+        <div class="centered">Let us know how we can improve freeCodeCamp</div>
+        <div class="grid">
+            <div class="label">* Name:</div>
+            <div class="input"><input type="text" placeholder="Enter your name" /></div>
+            <div class="label">* Email:</div>
+            <div class="input"><input type="email" placeholder="Enter your Email" /></div>
+            <div class="label">* Age:</div>
+            <div class="input"><input type="number" min="0" placeholder="Age" /></div>
+            <div class="label">Which option best describes your current role?</div>
+            <div class="input">
+                <select>
+                    <option selected>Student</option>
+                    <option>Professor</option>
+                </select>
+            </div>
+            <div class="label">* How likely is that you would recommend freeCodeCamp to a friend?</div>
+            <div class="input">
+                <div>
+                    <input type="radio" name="recommendation" id="r1" />
+                    <label for="r1">Definitely</label>
+                </div>
+                <div>
+                    <input type="radio" name="recommendation" id="r2" />
+                    <label for="r2">Maybe</label>
+                </div>
+                <div>
+                    <input type="radio" name="recommendation" id="r3" />
+                    <label for="r3">Not sure</label>
+                </div>
+            </div>
+            <div class="label">What do you like most in FCC:</div>
+            <div class="input">
+                <select>
+                    <option>Select an option</option>
+                    <option>The thing with FCC</option>
+                    <option>Anything other than FCC</option>
+                </select>
+            </div>
+            <div class="label">Things that should be improved in the future (Check all that apply):</div>
+            <div class="input">
+                <div>
+                    <input type="checkbox" id="c1" />
+                    <label for="c1">Front-end Projects</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="c2" />
+                    <label for="c2">Back-end Projects</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="c3" />
+                    <label for="c3">Data Visualization</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
