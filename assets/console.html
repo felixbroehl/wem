@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Console</title>
+    <script>
+        function createLog(texts, severity) {
+            const div = document.createElement('div');
+            div.classList.add('log-entry');
+            div.classList.add('severity-' + severity);
+            for (let text of texts) {
+                const span = document.createElement('span');
+                span.textContent = text;
+                div.appendChild(span);
+            }
+            document.body.appendChild(div);
+        }
+        console.log = function() {
+            createLog(Array.from(arguments).map(item => item+''), 'info');
+        }
+        console.error = function() {
+            createLog(Array.from(arguments).map(item => item+''), 'error');
+        }
+        console.warn = function() {
+            createLog(Array.from(arguments).map(item => item+''), 'error');
+        }
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error(error);
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans Mono', monospace;
+        }
+
+        .log-entry {
+
+        }
+
+        .severity-info {
+
+        }
+
+        .severity-warn {
+            background-color: #d6c209;
+        }
+
+        .severity-error {
+            background-color: #d60909;
+        }
+
+        .log-entry > span:nth-child(n+2):before {
+            content: ' - ';
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
