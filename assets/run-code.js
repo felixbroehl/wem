@@ -3,11 +3,13 @@ function insertAfter(newElement, referenceElement) {
 }
 
 function initRunButtons() {
-    document.querySelectorAll('.run-solution-button').forEach((button) => {
+    document.querySelectorAll('.run-solution-button').forEach(async (button) => {
         // Retrieve urls
         const htmlUrl = button.getAttribute('data-run-html');
         const jsUrl = button.getAttribute('data-run-js');
         const cssUrl = button.getAttribute('data-run-css');
+
+        const size = button.getAttribute('data-run-size');
 
         // Add code preview
         const codePreview = document.createElement('div');
@@ -21,13 +23,13 @@ function initRunButtons() {
             codePreview.appendChild(pre);
         }
         if (htmlUrl) {
-            addPreviewContent(htmlUrl, 'html');
-        }
-        if (jsUrl) {
-            addPreviewContent(jsUrl, 'js');
+            await addPreviewContent(htmlUrl, 'html');
         }
         if (cssUrl) {
-            addPreviewContent(cssUrl, 'css');
+            await addPreviewContent(cssUrl, 'css');
+        }
+        if (jsUrl) {
+            await addPreviewContent(jsUrl, 'js');
         }
 
         // Add click event
@@ -47,6 +49,11 @@ function initRunButtons() {
             const iframe = document.createElement('iframe');
             iframe.classList.add('run-iframe');
             iframe.src = htmlUrl?htmlUrl:'../assets/console.html';
+            if (size === 'middle') {
+                iframe.classList.add('size-middle');
+            } else if (size === 'large') {
+                iframe.classList.add('size-large');
+            }
 
             insertAfter(iframe, button);
 
@@ -62,7 +69,7 @@ function initRunButtons() {
                 }
                 if (css) {
                     const style = document.createElement('style');
-                    style.text = css;
+                    style.innerText = css;
                     iframeHeadElement.appendChild(style);
                 }
             });

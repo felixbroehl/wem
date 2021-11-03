@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+.fore-palette {
+    display: none;
+}
+
+.fore-wrapper:hover .fore-palette {
+    display: flex;
+    position: absolute;
+}
+
+.fore-palette a {
+    width: 20px;
+    height: 20px;
+}
+
+.fore-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+#editor {
+    min-height: 300px;
+    border: 1px solid #ccc;
+    padding: 1em;
+}
+
+.toolbar {
+    display: flex;
+}
+
+.toolbar > a, .toolbar > .fore-wrapper > a {
+    border: 1px solid #ccc;
+    border-radius: 0.25em;
+}
+
+.toolbar a {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    padding: 0.25em;
+    margin-right: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+.toolbar a > img {
+    width: 100%;
+    position: relative;
+}
+
+.fore-palette > a {
+    border: 1px solid #999;
+}
+
+.fore-palette {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.2em;
+    padding-left: 0.25em;
+    padding-top: 0.25em;
+}

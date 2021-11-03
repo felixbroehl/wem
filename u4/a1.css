@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+#item-list > li {
+    margin-bottom: 0.3em;
+}
+
+#item-list > li > span {
+    margin-right: 1em;
+}

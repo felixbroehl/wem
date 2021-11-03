@@ -80,4 +80,13 @@ img {
     width: 100%;
     border: 1px solid #ddd;
     margin-top: 5px;
+    height: 150px;
+}
+
+.run-iframe.size-middle {
+    height: 300px;
+}
+
+.run-iframe.size-large {
+    height: 500px;
 }

@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+table {
+    border-spacing:0;
+    border-collapse: collapse;
+}
+
+td {
+    min-width: 150px;
+    border: 1px solid #000;
+    text-align: right;
+    font-size: 1.5em;
+}
