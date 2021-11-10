@@ -1,0 +1,3 @@
+ Welt!
+ aus den beiden Dateien
+ und b.txt zusammengesetzt

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 5 Aufgabe 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --site-border-radius: 1em;
+            --header-background-color: #ba4e4f;
+            --container-side-background-color: #bb7f7e;
+            --container-content-background-color: #689ab7;
+            --footer-background-color: #030303;
+            --text-color: #fff;
+        }
+
+        body {
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 16px);
+        }
+
+        header {
+            background-color: #c14f50;
+            border-top-left-radius: var(--site-border-radius);
+            border-top-right-radius: var(--site-border-radius);
+        }
+
+        h1 {
+            margin: 0;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        nav {
+            margin: 0px 8px 8px;
+        }
+
+        nav > a, #left > a {
+            color: #000;
+            text-decoration: none;
+            background-color: #686d99;
+            padding: 3px 30px;
+            border-radius: 1em;
+            border: 3px solid;
+            --left-half-border: #eee;
+            --right-half-border: #939999;
+            border-color:
+                    var(--left-half-border)
+                    var(--right-half-border)
+                    var(--right-half-border)
+                    var(--left-half-border);
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 14px;
+            display: inline-block;
+            margin: 0px 8px 8px;
+        }
+
+        nav > a.active, #left > a.active {
+            background-color: #d9d4d2;
+        }
+
+        #container {
+            flex-grow: 1;
+            overflow: auto;
+        }
+
+        #wrapper {
+            width: 100%;
+            min-height: 100%;
+            display: flex;
+        }
+
+        #left, #right {
+            background-color: var(--container-side-background-color);
+            width: 20vw;
+        }
+
+        #right {
+            text-align: center;
+            word-break: break-all;
+        }
+
+        #right a {
+            display: block;
+        }
+
+        #left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #content {
+            background-color: var(--container-content-background-color);
+            width: 60vw;
+        }
+
+        footer {
+            background-color: var(--footer-background-color);
+            text-align: center;
+            border-bottom-left-radius: var(--site-border-radius);
+            border-bottom-right-radius: var(--site-border-radius);
+            padding-bottom: 1em;
+        }
+
+        footer > span {
+            font-size: 2em;
+        }
+
+        footer > a {
+            color: var(--text-color);
+        }
+
+        footer > * {
+            margin: 0px 3px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Header</h1>
+    <nav></nav>
+</header>
+<section id="container">
+    <div id="wrapper">
+        <div id="left"></div>
+        <div id="content"></div>
+        <div id="right"></div>
+    </div>
+</section>
+<footer>
+    <span>Footer:</span>
+    <a href="#">Sitemap</a>
+    <a href="#">Home</a>
+    <a href="#">News</a>
+    <a href="#">Contact</a>
+    <a href="#">About</a>
+</footer>
+<script src="a4.js"></script>
+</body>
+</html>

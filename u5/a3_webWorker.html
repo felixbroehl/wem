@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 5 Aufgabe 3 mit Webworker</title>
+    <style>
+        span {
+            padding:1em;
+            margin: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+<progress indeterminate="true"></progress>
+<div id="content"></div>
+<script>
+    window.addEventListener('load', () => {
+        const content = document.querySelector('#content');
+        const myWorker = new Worker('assets/worker.js');
+        myWorker.addEventListener("message", function handleMessageFromWorker(msg) {
+            const data = msg.data;
+            insert(data);
+        });
+        myWorker.postMessage('start');
+
+        const insert = (data) => {
+            const span = document.createElement('span');
+            span.innerText = data;
+            if (data === '2') {
+                content.appendChild(span);
+            } else {
+                content.insertBefore(span, content.children[0]);
+            }
+        }
+    });
+</script>
+</body>
+</html>
