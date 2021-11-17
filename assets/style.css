@@ -2,12 +2,29 @@
 
 :root {
     --primary-color: #09d676;
+    --secondary-color: #b0d609;
+    --link-color: #055831;
+}
+
+html {
+    background-color: var(--primary-color);
 }
 
 body {
     max-width: 800px;
     font-family: 'Rubik', sans-serif;
     margin: 0 auto;
+    background-color: #fff;
+    padding: 1em;
+    min-height: 100%;
+}
+
+a, a:link, a:visited {
+    color: var(--link-color);
+}
+
+a:hover, a:active {
+    color: var(--secondary-color);
 }
 
 pre {
@@ -45,7 +62,7 @@ img {
 .open-solution-button, .run-solution-button {
     padding: .5rem;
     text-decoration: none;
-    color: white;
+    color: white !important;
     background-color: var(--primary-color);
     border-radius: .3rem;
     transition: box-shadow .3s ease-in-out;

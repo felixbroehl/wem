@@ -13,7 +13,7 @@ function initRunButtons() {
 
         // Add code preview
         const codePreview = document.createElement('div');
-        codePreview.classList.add('.code-preview');
+        codePreview.classList.add('code-preview');
         button.parentElement.insertBefore(codePreview, button);
         const addPreviewContent = async (url, cssClass) => {
             const content = url?await (await fetch(url)).text():undefined;
