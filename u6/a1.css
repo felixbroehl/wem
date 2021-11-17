@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+svg {
+    font-family: 'Rubik', sans-serif;
+}
+
+@keyframes rect-rise {
+    from { transform: scale(0,1); }
+    to { transform: scale(1,1); }
+}
+
+svg rect {
+    animation: rect-rise 2s ease-in-out;
+}
