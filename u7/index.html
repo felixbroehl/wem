@@ -10,24 +10,30 @@
 <a href="..">Übersicht</a>
 <h1>Übung 7</h1>
 <div class="task">
-    <h2>7.1 Statistik-Balkendiagramm in SVG</h2>
-    <p>Implementieren Sie ein Balkendiagramm mit Inline SVG. Geben Sie die Daten für das Balkendiagramm im JSON-Format vor. Nehmen Sie als Beispieldaten die Sitzverteilung im Deutschen Bundestag. Animieren Sie die Grafik ähnlich wie im Highchart Bar Chart.</p>
-    <a href="#" class="run-solution-button" data-run-html="a1.html" data-run-js="a1.js" data-run-css="a1.css" data-run-size="large">Lösung ausführen</a>
+    <h2>7.1 File Generatoren</h2>
+    <p>Schreiben Sie in Node.js zwei Kommandozeilen-Tools, um große Dateien zu erzeugen.</p>
+    <p>node number_file_gen.js 20_000 soll eine Datei mit 20.000 Zeilen erzeugen. In jeder Zeile soll die Zeilennummer und ein Punkt stehen. 20.000 ist dabei ein Parameter des Tools. Jede andere Zahl soll ebenfalls erlaubt sein.</p>
+    <div class="code-preview-box" data-url="number_file_gen.js"></div>
+    <p>node alpha_file_gen.js 123456 soll eine Datei mit 123456 Zeilen erzeugen. In jeder Zeile soll eine Variation mit Wiederholung aller Großbuchstaben (ohne Umlaute) in Reihenfolge stehen.</p>
+    <div class="code-preview-box" data-url="alpha_file_gen.js"></div>
 </div>
 <div class="task">
-    <h2>7.2. SVG Bezier-Animation</h2>
-    <p>Schreiben Sie mit SVG ein Animationswerkzeug für Bezierkurven, wie unter §1 - A lightning introduction vorgegeben.</p>
-    <a href="#" class="run-solution-button" data-run-html="a2.html" data-run-js="a2.js" data-run-css="a2.css" data-run-size="middle">Lösung ausführen</a>
+    <h2>7.2. Performance Merge</h2>
+    <p>Schreiben Sie in Node.js zwei Programme merge_files.js und merge_streams.js, um große Dateien zu zeilenweise zusammenzuführen, merge_files.js mit fs.readFile und merge_streams.js mit Streams, also createReadFileStream und pipeline.</p>
+    <p>node merge_files.js big_file1.txt big_file2.txt</p>
+    <div class="code-preview-box" data-url="merge_files.js"></div>
+    <p>node merge_streams.js big_file1.txt big_file2.txt</p>
+    <div class="code-preview-box" data-url="merge_streams.js"></div>
+    <p>Messen Sie anschließend die Performanz beider Programme.</p>
+    <pre>merge_files.js für 2 Dateien mit jeweils 20000 Zeilen: 15ms
+merge_streams.js für 2 Dateien mit jeweils 20000 Zeilen: 13ms</pre>
 </div>
 <div class="task">
-    <h2>7.3. Kalligraphie-Editor in SVG</h2>
-    <p>Schreiben Sie mit SVG einen Kalligraphie-Editor mit folgenden Features:</p>
-    <ul>
-        <li>Im Zeichenbereich kann man mit der Maus Linien erzeugen.</li>
-        <li>Eine durchgehende Linie wird nur erzeugt, solange man die Maus gedrückt hält.</li>
-        <li>Je langsamer man den Cursor bewegt, desto dicker wird die Linie (so als ob das Papier an der Stelle die Tinte schneller aufsaugt).</li>
-    </ul>
-    <a href="#" class="run-solution-button" data-run-html="a3.html" data-run-js="a3.js" data-run-css="a3.css" data-run-size="large">Lösung ausführen</a>
+    <h2>7.3. Express.js Server</h2>
+    <p>Schreiben Sie einen lokalen Express.js-HTTP-Server für den Merge-Dienst, d.h. auf der lokal angezeigten Webseite kann man zwei Dateien auswählen, um diese zeilenweise zu mergen. Das Ergebnis soll dann in der Webseite erscheinen und zum Download angeboten werden.</p>
+    <p>Arbeiten Sie lokal auf Ihrem Notebook mit localhost.</p>
+    <div class="code-preview-box" data-url="merge_streams_express.js"></div>
+    <div class="code-preview-box" data-url="public/index.html"></div>
 </div>
 </body>
 </html>
