@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        pre {
+            max-height: 400px;
+            overflow: auto;
+        }
+    </style>
+    <script>
+        async function download(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const downloadButton = document.querySelector('a');
+            downloadButton.classList.add('disabled');
+
+            const file1 = document.querySelector('#file1');
+            const file2 = document.querySelector('#file2');
+
+            const data = new FormData();
+            data.append('file1', file1.files[0]);
+            data.append('file2', file2.files[0]);
+
+            const result = await fetch('/upload', {
+                method: 'POST',
+                headers: {
+                    enctype: 'multipart/form-data'
+                },
+                body: data
+            });
+            const text = await result.text();
+
+            const pre = document.querySelector('pre');
+            pre.innerText = text;
+
+            downloadButton.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+            downloadButton.classList.remove('disabled');
+        }
+
+        window.addEventListener('load', () => {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', download)
+        })
+    </script>
+</head>
+<body>
+    <form action="#">
+        File1: <input type="file" name="file1" accept=".txt" id="file1" />
+        File2: <input type="file" name="file2" accept=".txt" id="file2" />
+        <input type="submit" />
+    </form>
+    <pre></pre>
+    <a download="merged_files.txt" href="#" class="disabled">Download</a>
+</body>
+</html>
