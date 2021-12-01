@@ -22,8 +22,12 @@
 <div class="task">
     <h2>5.3. Web Worker</h2>
     <p>Schreiben Sie eine Webseite, die Primzahlen berechnet und fortlaufend neu berechnete Primzahlen hinzufügt. Verwenden Sie dabei die BigNum-Arithmetik. Auf der Webseite soll außerdem ein Ladebalken ständig hin- und herlaufen, damit man feststellen kann, ob die Anzeige ruckelfrei abläuft. Stellen Sie fest, ab welcher Zahl der Ladebalken anfängt zu ruckeln.</p>
+    <code-preview data-url="a3.html"></code-preview>
     <a href="a3.html" class="open-solution-button" target="_blank">Lösung Aufgabe 3 ohne Web Worker</a>
     <p>Schreiben Sie dann einen Web Worker, der Primzahlen berechnet und diese mittels postMessage an die EventLoop in der Webseite sendet, damit diese dort angezeigt werden können.</p>
+    <code-preview data-url="a3_webWorker.html"></code-preview>
+    <p>ServiceWorker:</p>
+    <code-preview data-url="assets/worker.js"></code-preview>
     <a href="a3_webWorker.html" class="open-solution-button" target="_blank">Lösung Aufgabe 3 mit Web Worker</a>
 </div>
 <div class="task">
@@ -32,6 +36,8 @@
     <img src="https://kaul.inf.h-brs.de/wem/assets/img/www-navigator.png" style="width:80%;margin:0 10%;" />
     <p>Schreiben Sie in HTML und CSS nur den responsiven Rahmen für einen solchen WWW-Navigator. Dabei können Sie auch ein schöneres Layout als das hier gezeigte erstellen. Die Inhalte sollen in einer JSON-Datei extern gelagert werden. Mit der fetch-API soll die JSON-Datei asynchron nicht-blockierend geladen werden. Sobald die Inhalte angekommen sind, sollen sie im Browser auch angezeigt werden.</p>
     <p>Fügen Sie selbst in die JSON-Datei zusätzliche Inhalte zu Themen der Vorlesung als Strings beispielhaft ein. Wenn Sie Inhalte aus fremden Quellen kopieren, so schreiben Sie bitte stets die Quelle als externe Ressource hinzu. Diese soll dann auf der rechten Seite im WWW-Navigator erscheinen.</p>
+    <code-preview data-url="a4.html"></code-preview>
+    <code-preview data-url="a4.js"></code-preview>
     <a href="a4.html" class="open-solution-button" target="_blank">Lösung Aufgabe 4</a>
 </div>
 </body>
