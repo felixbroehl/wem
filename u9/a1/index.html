@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Übung 9 Aufgabe 1</title>
+    <link href="manifest.json" rel="manifest" />
+</head>
+<body>
+    <navigator-component></navigator-component>
+    <script type="module" src="main.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js', { scope: '/wem/u9/a1/' }).then(() => {
+                console.log('ServiceWorker registration successful');
+            }).catch((err) => {
+                console.error('ServiceWorker registration failed', err);
+            })
+        });
+    </script>
+</body>
+</html>
