@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Übung 9</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/style.css" media="screen" />
     <script src="../assets/run-code.js" type="module"></script>
+    <script src="../assets/menu.js"></script>
+    <!--<link href="../assets/manifest/manifest.json" rel="manifest" />-->
 </head>
 <body>
-<a href="..">Übersicht</a>
-<h1>Übung 9</h1>
+<main>
+<h1>PWA – Übung 9</h1>
 <div class="task">
     <h2>9.1 PWA</h2>
     <p>Wandeln Sie Ihren LitElement WWW-Navigator aus Aufgabe 8.3 in eine Progressive Web App um.</p>
@@ -20,5 +23,36 @@
     <code-preview data-url="a1/sw.js"></code-preview>
     <a href="a1/index.html" class="open-solution-button" target="_blank">Lösung Aufgabe 1</a>
 </div>
+<div class="page-end-menu">
+    <a class="backward" href="../u8/">
+        <img src="../assets/arrow.svg">
+        Vorherige Einheit
+    </a>
+    <a class="forward" href="../u10/">
+        Nächste Einheit
+        <img src="../assets/arrow.svg">
+    </a>
+</div>
+    <footer>
+        &copy; Felix Bröhl 2022
+    </footer>
+</main>
+<nav>
+    <div id="burger-button"><div></div></div>
+    <a href="../" id="logo"><img src="../assets/img/logo.svg"></a>
+    <a href="../">0. Übersicht</a>
+    <a href="../u1/">1. Einführung</a>
+    <a href="../u2/">2. Responsives Web</a>
+    <a href="../u3/">3. JavaScript</a>
+    <a href="../u4/">4. DOM</a>
+    <a href="../u5/">5. Asynchron</a>
+    <a href="../u6/">6. SVG</a>
+    <a href="../u7/">7. Node.js, npm & Deno</a>
+    <a href="../u8/">8. Modulares Web</a>
+    <a href="../u9/" class="active">9. PWA</a>
+    <a href="../u10/">10. Vue</a>
+    <a href="../u11/">11. WebAssembly</a>
+    <a href="../u12/">12. Sicherheit</a>
+</nav>
 </body>
 </html>

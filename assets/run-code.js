@@ -1,25 +1,25 @@
-import {html, css, LitElement} from 'https://cdn.skypack.dev/lit';
+import {html, css, LitElement} from 'https://cdn.skypack.dev/lit@v2.1.2';
+import * as monaco from 'https://cdn.skypack.dev/@lukaskl/monaco-editor';
 
 export class CodePreview extends LitElement {
     static styles = css`
         .code-preview {
             position: relative;
-        }
-         
-        pre {
-            font-family: 'Noto Sans Mono', monospace;
-            border: 1px solid #aaa;
-            background-color: #ddd;
-            padding: 1rem;
-            position: relative;
-            white-space: pre-wrap;
+            margin-bottom: 1em;
         }
         
         .extension {
             position: absolute;
-            right: 5px;
+            right: 18px;
             top: 5px;
             opacity: 0.5;
+            color: #fff;
+        }
+        
+        .code-mirror {
+            height: 350px;
+            position:relative;
+            background-color: #272822;
         }
     `;
 
@@ -29,24 +29,35 @@ export class CodePreview extends LitElement {
         _extension: {type: String}
     };
 
+    modeMapping = {
+        HTML: 'html',
+        CSS: 'css',
+        JS: 'javascript',
+        JSON: 'json'
+    }
+    isSetup = false;
+
     constructor() {
         super();
         this.url = this.getAttribute('data-url');
     }
 
+    // because monaco editor dont run inside of shadow dom
+    createRenderRoot() {
+        return this;
+    }
+
     render() {
         return html`
+            <style>${CodePreview.styles}</style>
             <div class="code-preview">
-                <pre>${this.renderContent()}</pre>
+                <div class="code-mirror"></div>
                 ${this._extension?html`<div class="extension">${this._extension}</div>`:''}
             </div>
         `;
     }
 
-    renderContent() {
-        if (!this.url) {
-            return html`<slot></slot>`;
-        }
+    getContent() {
         if (!this._content) {
             return 'Loading...';
         }
@@ -57,13 +68,53 @@ export class CodePreview extends LitElement {
         if (this.url && !this._content) {
             (async () => {
                 this._content = await (await fetch(this.url)).text();
+                this.updateBox();
             })();
             const urlSplit = this.url.split('.');
             this._extension = urlSplit[urlSplit.length-1].toUpperCase();
         }
     }
+
+    updateBox() {
+        if (!this.isSetup) {
+            this.isSetup = true;
+            fetch('https://raw.githubusercontent.com/brijeshb42/monaco-themes/master/themes/Monokai.json')
+                .then(data => data.json())
+                .then(data => {
+                    monaco.editor.defineTheme('monokai', data);
+                    monaco.editor.setTheme('monokai');
+                    const editor = monaco.editor.create(this.querySelector('.code-mirror'), {
+                        value: this.getContent(),
+                        language: this.modeMapping[this._extension],
+                        minimap: {
+                            enabled: false
+                        },
+                        readOnly: true,
+                        hover: false,
+                        scrollbar: {
+                            alwaysConsumeMouseWheel: false
+                        },
+                        scrollBeyondLastLine: false,
+                        contextmenu: false
+                    });
+                    window.addEventListener('resize', () =>{
+                        editor.layout();
+                    });
+                });
+        }
+    }
 }
 customElements.define('code-preview', CodePreview);
+window.MonacoEnvironment = {
+    getWorkerUrl: function(workerId, label) {
+        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
+        self.MonacoEnvironment = {
+          baseUrl: 'https://unpkg.com/monaco-editor@latest/min/'
+        };
+        importScripts('https://unpkg.com/monaco-editor@latest/min/vs/base/worker/workerMain.js');`
+        )}`;
+    }
+};
 
 export class RunCode extends LitElement {
     static styles = css`
@@ -130,8 +181,14 @@ export class RunCode extends LitElement {
         this._jsType = this.getAttribute('data-run-js-type');
     }
 
+    // because monaco editor dont run inside of shadow dom
+    createRenderRoot() {
+        return this;
+    }
+
     render() {
         return html`
+            <style>${RunCode.styles}</style>
             ${this._htmlUrl?html`<code-preview .url=${this._htmlUrl}></code-preview>`:''}
             ${this._cssUrl?html`<code-preview .url=${this._cssUrl}></code-preview>`:''}
             ${this._jsUrl?html`<code-preview .url=${this._jsUrl}></code-preview>`:''}
@@ -158,7 +215,7 @@ export class RunCode extends LitElement {
         const js = this._jsUrl?await (await fetch(this._jsUrl)).text():undefined;
         const css = this._cssUrl?await (await fetch(this._cssUrl)).text():undefined;
 
-        const wrapper = this.renderRoot.querySelector('#iframe-wrapper');
+        const wrapper = this.querySelector('#iframe-wrapper');
         wrapper.innerHTML = '';
         wrapper.appendChild(iframe);
 

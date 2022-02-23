@@ -8,8 +8,8 @@ self.addEventListener('install', (event) => {
                 'main.js',
                 'index.html',
                 'manifest.json',
-                'https://cdn.skypack.dev/lit',
-                'https://cdn.skypack.dev/lit/directives/class-map.js'
+                'https://cdn.skypack.dev/lit@v2.1.2',
+                'https://cdn.skypack.dev/lit@v2.1.2/directives/class-map.js'
             ])
         })
     )

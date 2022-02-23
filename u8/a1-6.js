@@ -1,4 +1,4 @@
-import {html, css, LitElement} from 'https://cdn.skypack.dev/lit';
+import {html, css, LitElement} from 'https://cdn.skypack.dev/lit@v2.1.2';
 
 export class CalligraphyEditor extends LitElement {
     static styles = css`

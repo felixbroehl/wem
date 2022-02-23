@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Übung 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/style.css" media="screen" />
     <script src="../assets/run-code.js" type="module"></script>
+    <script src="../assets/menu.js"></script>
+    <!--<link href="../assets/manifest/manifest.json" rel="manifest" />-->
 </head>
 <body>
-<a href="..">Übersicht</a>
-<h1>Übung 4</h1>
+<main>
+<h1>DOM – Übung 4</h1>
 <div class="task">
     <h2>4.1 Einkaufsliste</h2>
     <p>Implementieren Sie die interaktive Anwendung "Einkaufsliste" selbstständig in JavaScript durch Nutzung der DOM API. Jeder Punkt auf der Einkaufsliste soll sich individuell löschen lassen. Suchen Sie eine möglichst kurze und elegante Lösung. Denken Sie außerdem über Usability nach: Welche User Interaktionen sollten ebenfalls erlaubt sein? Implementieren Sie dann auch diese.</p>
@@ -33,7 +36,38 @@
 <div class="task">
     <h2>4.4. HTML-Editor</h2>
     <p>Arbeiten Sie das Tutorial <a href="https://code.tutsplus.com/tutorials/create-a-wysiwyg-editor-with-the-contenteditable-attribute--cms-25657">Create a WYSIWYG Editor With the contentEditable Attribute</a> durch und erstellen Sie Ihren eigenen HTML-Editor.</p>
-    <run-code data-run-html="a4.html" data-run-js="a4.js" data-run-css="a4.css" data-run-size="middle">Lösung ausführen</run-code>
+    <run-code data-run-html="a4.html" data-run-js="a4.js" data-run-css="a4.css" data-run-size="large">Lösung ausführen</run-code>
 </div>
+<div class="page-end-menu">
+    <a class="backward" href="../u3/">
+        <img src="../assets/arrow.svg">
+        Vorherige Einheit
+    </a>
+    <a class="forward" href="../u5/">
+        Nächste Einheit
+        <img src="../assets/arrow.svg">
+    </a>
+</div>
+    <footer>
+        &copy; Felix Bröhl 2022
+    </footer>
+</main>
+<nav>
+    <div id="burger-button"><div></div></div>
+    <a href="../" id="logo"><img src="../assets/img/logo.svg"></a>
+    <a href="../">0. Übersicht</a>
+    <a href="../u1/">1. Einführung</a>
+    <a href="../u2/">2. Responsives Web</a>
+    <a href="../u3/">3. JavaScript</a>
+    <a href="../u4/" class="active">4. DOM</a>
+    <a href="../u5/">5. Asynchron</a>
+    <a href="../u6/">6. SVG</a>
+    <a href="../u7/">7. Node.js, npm & Deno</a>
+    <a href="../u8/">8. Modulares Web</a>
+    <a href="../u9/">9. PWA</a>
+    <a href="../u10/">10. Vue</a>
+    <a href="../u11/">11. WebAssembly</a>
+    <a href="../u12/">12. Sicherheit</a>
+</nav>
 </body>
 </html>

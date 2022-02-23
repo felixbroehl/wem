@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Übung 7</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/style.css" media="screen" />
     <script src="../assets/run-code.js" type="module"></script>
+    <script src="../assets/menu.js"></script>
+    <!--<link href="../assets/manifest/manifest.json" rel="manifest" />-->
 </head>
 <body>
-<a href="..">Übersicht</a>
-<h1>Übung 7</h1>
+<main>
+<h1>Node.js, npm & Deno – Übung 7</h1>
 <div class="task">
     <h2>7.1 File Generatoren</h2>
     <p>Schreiben Sie in Node.js zwei Kommandozeilen-Tools, um große Dateien zu erzeugen.</p>
@@ -25,8 +28,8 @@
     <p>node merge_streams.js big_file1.txt big_file2.txt</p>
     <code-preview data-url="merge_streams.js"></code-preview>
     <p>Messen Sie anschließend die Performanz beider Programme.</p>
-    <code-preview>merge_files.js für 2 Dateien mit jeweils 20000 Zeilen: 15ms
-merge_streams.js für 2 Dateien mit jeweils 20000 Zeilen: 13ms</code-preview>
+    <pre>merge_files.js für 2 Dateien mit jeweils 20000 Zeilen: 15ms
+merge_streams.js für 2 Dateien mit jeweils 20000 Zeilen: 13ms</pre>
 </div>
 <div class="task">
     <h2>7.3. Express.js Server</h2>
@@ -35,5 +38,36 @@ merge_streams.js für 2 Dateien mit jeweils 20000 Zeilen: 13ms</code-preview>
     <code-preview data-url="merge_streams_express.js"></code-preview>
     <code-preview data-url="public/index.html"></code-preview>
 </div>
+<div class="page-end-menu">
+    <a class="backward" href="../u6/">
+        <img src="../assets/arrow.svg">
+        Vorherige Einheit
+    </a>
+    <a class="forward" href="../u8/">
+        Nächste Einheit
+        <img src="../assets/arrow.svg">
+    </a>
+</div>
+    <footer>
+        &copy; Felix Bröhl 2022
+    </footer>
+</main>
+<nav>
+    <div id="burger-button"><div></div></div>
+    <a href="../" id="logo"><img src="../assets/img/logo.svg"></a>
+    <a href="../">0. Übersicht</a>
+    <a href="../u1/">1. Einführung</a>
+    <a href="../u2/">2. Responsives Web</a>
+    <a href="../u3/">3. JavaScript</a>
+    <a href="../u4/">4. DOM</a>
+    <a href="../u5/">5. Asynchron</a>
+    <a href="../u6/">6. SVG</a>
+    <a href="../u7/" class="active">7. Node.js, npm & Deno</a>
+    <a href="../u8/">8. Modulares Web</a>
+    <a href="../u9/">9. PWA</a>
+    <a href="../u10/">10. Vue</a>
+    <a href="../u11/">11. WebAssembly</a>
+    <a href="../u12/">12. Sicherheit</a>
+</nav>
 </body>
 </html>

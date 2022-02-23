@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Übung 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../assets/style.css" media="screen" />
+    <script src="../assets/menu.js"></script>
     <script src="../assets/run-code.js" type="module"></script>
+    <!--<link href="../assets/manifest/manifest.json" rel="manifest" />-->
 </head>
 <body>
-    <a href="..">Übersicht</a>
-    <h1>Übung 1</h1>
+<main>
+    <h1>Einführung – Übung 1</h1>
     <div class="task">
         <h2>1.1. Fachliche Argumentation über Erfolgsprinzipien des WWW</h2>
         <p>Mit welchen fachlichen Argumenten wurde das WWW-Proposal von TBL abgelehnt?</p>
-        <code-preview>Chef von Tim-Berners-Lee lehnte das Konzept mit folgendem Kommentar ab: "Interessant, aber ein bisschen vage"
-Ablehnung seines Konzeptpapiers 1991 von weltgrößter Hypertext-Konferenz, da sein Konzept angeblich nicht so weit sei wie andere und Broken-Links beinhalten würde.</code-preview>
+        <pre>Chef von Tim-Berners-Lee lehnte das Konzept mit folgendem Kommentar ab: "Interessant, aber ein bisschen vage"
+Ablehnung seines Konzeptpapiers 1991 von weltgrößter Hypertext-Konferenz, da sein Konzept angeblich nicht so weit sei wie andere und Broken-Links beinhalten würde.</pre>
         <p>Was sind die fachlichen Argumente, warum das WWW dennoch ein Erfolg wurde?</p>
-        <code-preview>Grund für den Erfolg war, dass er sein Konzept am Rande der Veranstaltung mit einem Poster vorstellen durfte und dabei von Marc Andreesen entdeckt wurde und mit diesem zusammen der Browser Mosaic entwickelt wurde.
+        <pre>Grund für den Erfolg war, dass er sein Konzept am Rande der Veranstaltung mit einem Poster vorstellen durfte und dabei von Marc Andreesen entdeckt wurde und mit diesem zusammen der Browser Mosaic entwickelt wurde.
 1994 gründete TBL das WWW-Consortium.
-Fachliche Gründe waren, die Offenheit, Dezentralität und Evolvierbarkeit des WWW.</code-preview>
+Fachliche Gründe waren, die Offenheit, Dezentralität und Evolvierbarkeit des WWW.</pre>
         <p>Was wäre der Preis für die garantierte Verhinderung von “broken links”?</p>
-        <code-preview>Referenzielle Integrität => Zentrale Kontrolle, Geschlossenheit</code-preview>
+        <pre>Referenzielle Integrität => Zentrale Kontrolle, Geschlossenheit</pre>
     </div>
     <div class="task">
         <h2>1.2. HTTP</h2>
         <p>Sie bekommen im Browser den HTTP Status Code 200. Was bedeutet das?</p>
-        <code-preview>OK, Anfrage wurde erfolgreich durchgeführt</code-preview>
+        <pre>OK, Anfrage wurde erfolgreich durchgeführt</pre>
         <p>Sie bekommen im Browser den HTTP Status Code 301. Was hat das zu bedeuten?</p>
-        <code-preview>Moved Permanently, Seite wurde permanent verschoben. Weiterleitung über Location-Header.</code-preview>
+        <pre>Moved Permanently, Seite wurde permanent verschoben. Weiterleitung über Location-Header.</pre>
         <p>Sie bekommen im Browser den HTTP Status Code 400. Was hat das zu bedeuten? Was können Sie dagegen tun?</p>
-        <code-preview>Bad Request, Anfrage des Nutzers hatte eine für den Server nicht verständliche oder unvollständige Syntax. Somit ist die Anfrage entsprechend der vom Server erwarteten Syntax anzupassen.</code-preview>
+        <pre>Bad Request, Anfrage des Nutzers hatte eine für den Server nicht verständliche oder unvollständige Syntax. Somit ist die Anfrage entsprechend der vom Server erwarteten Syntax anzupassen.</pre>
         <p>Sie bekommen im Browser den HTTP Status Code 403. Was hat das zu bedeuten? Was können Sie dagegen tun?</p>
-        <code-preview>Forbidden, Der Nutzer ist nicht berechtigt auf die aufgerufene URL zuzugreifen. Somit müsste sich ein Nutzer zunächst authentifizieren.</code-preview>
+        <pre>Forbidden, Der Nutzer ist nicht berechtigt auf die aufgerufene URL zuzugreifen. Somit müsste sich ein Nutzer zunächst authentifizieren.</pre>
         <p>In einer Webanwendung benötigen Sie eine OPTIONS-Anfrage, die die Optionen des Servers vor dem eigentlichen Zugriff erfragen soll. Aus Performanzgründen soll die Abfrage jedoch cacheable sein. Wie könnten Sie dafür eine Lösung angehen?</p>
-        <code-preview>Mit Cache-Control-Headern, jedoch dürfte der Browser diese für OPTIONS-Anfragen ignorieren.</code-preview>
+        <pre>Mit Cache-Control-Headern, jedoch dürfte der Browser diese für OPTIONS-Anfragen ignorieren.</pre>
     </div>
     <div class="task">
         <h2>1.3. Wireframe with HTML and CSS: Tribute Page</h2>
@@ -58,5 +61,33 @@ Fachliche Gründe waren, die Offenheit, Dezentralität und Evolvierbarkeit des W
         <code-preview data-url="a5.html"></code-preview>
         <a href="a5.html" class="open-solution-button" target="_blank">Lösung Aufgabe 5</a>
     </div>
+    <div class="page-end-menu">
+        <span></span>
+        <a class="forward" href="../u2/">
+            Nächste Einheit
+            <img src="../assets/arrow.svg">
+        </a>
+    </div>
+    <footer>
+        &copy; Felix Bröhl 2022
+    </footer>
+    </main>
+    <nav>
+        <div id="burger-button"><div></div></div>
+        <a href="../" id="logo"><img src="../assets/img/logo.svg"></a>
+        <a href="../">0. Übersicht</a>
+        <a href="../u1/" class="active">1. Einführung</a>
+        <a href="../u2/">2. Responsives Web</a>
+        <a href="../u3/">3. JavaScript</a>
+        <a href="../u4/">4. DOM</a>
+        <a href="../u5/">5. Asynchron</a>
+        <a href="../u6/">6. SVG</a>
+        <a href="../u7/">7. Node.js, npm & Deno</a>
+        <a href="../u8/">8. Modulares Web</a>
+        <a href="../u9/">9. PWA</a>
+        <a href="../u10/">10. Vue</a>
+        <a href="../u11/">11. WebAssembly</a>
+        <a href="../u12/">12. Sicherheit</a>
+    </nav>
 </body>
 </html>

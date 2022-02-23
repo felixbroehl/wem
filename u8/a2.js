@@ -1,6 +1,6 @@
-import {html, css, LitElement} from 'https://cdn.skypack.dev/lit';
+import {html, css, LitElement} from 'https://cdn.skypack.dev/lit@v2.1.2';
 
-import {classMap} from 'https://cdn.skypack.dev/lit/directives/class-map.js';
+import {classMap} from 'https://cdn.skypack.dev/lit@v2.1.2/directives/class-map.js';
 
 export class Menu extends LitElement {
     static styles = css`
