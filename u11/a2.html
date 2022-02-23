@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparison</title>
+    <script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Rubik', sans-serif;
+        }
+
+        #wrapper {
+            display: flex;
+        }
+
+        #wrapper > div {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Testcount: <input type="number" id="times-input" min="1" value="10" /><button id="button-start">Start</button>
+    </div>
+    <div id='chart'><i>Boxplot will be displayed here after completing measurements</i></div>
+    <div id="wrapper">
+        <div>
+            <h3>Results JS:</h3>
+            <div id="results-js"></div>
+        </div>
+        <div>
+            <h3>Results WebAssembly:</h3>
+            <div id="results-wasm"></div>
+        </div>
+    </div>
+    <script src="a2.js"></script>
+</body>
+</html>

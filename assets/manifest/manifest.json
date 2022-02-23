@@ -1,0 +1,31 @@
+{
+    "theme_color": "#09d676",
+    "background_color": "#09d676",
+    "display": "standalone",
+    "scope": "/wem/",
+    "start_url": "/wem/",
+    "name": "WEM App",
+    "short_name": "WEM",
+    "icons": [
+        {
+            "src": "/wem/assets/manifest/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/wem/assets/manifest/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/wem/assets/manifest/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/wem/assets/manifest/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
