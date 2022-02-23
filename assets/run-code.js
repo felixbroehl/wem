@@ -1,5 +1,4 @@
 import {html, css, LitElement} from 'https://cdn.skypack.dev/lit@v2.1.2';
-import * as monaco from 'https://cdn.skypack.dev/@lukaskl/monaco-editor';
 
 export class CodePreview extends LitElement {
     static styles = css`
@@ -20,6 +19,12 @@ export class CodePreview extends LitElement {
             height: 350px;
             position:relative;
             background-color: #272822;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
         }
     `;
 
@@ -42,25 +47,16 @@ export class CodePreview extends LitElement {
         this.url = this.getAttribute('data-url');
     }
 
-    // because monaco editor dont run inside of shadow dom
-    createRenderRoot() {
-        return this;
-    }
-
     render() {
         return html`
-            <style>${CodePreview.styles}</style>
             <div class="code-preview">
-                <div class="code-mirror"></div>
+                <div id="iframe-wrapper"></div>
                 ${this._extension?html`<div class="extension">${this._extension}</div>`:''}
             </div>
         `;
     }
 
     getContent() {
-        if (!this._content) {
-            return 'Loading...';
-        }
         return this._content;
     }
 
@@ -78,43 +74,28 @@ export class CodePreview extends LitElement {
     updateBox() {
         if (!this.isSetup) {
             this.isSetup = true;
-            fetch('https://raw.githubusercontent.com/brijeshb42/monaco-themes/master/themes/Monokai.json')
-                .then(data => data.json())
-                .then(data => {
-                    monaco.editor.defineTheme('monokai', data);
-                    monaco.editor.setTheme('monokai');
-                    const editor = monaco.editor.create(this.querySelector('.code-mirror'), {
-                        value: this.getContent(),
-                        language: this.modeMapping[this._extension],
-                        minimap: {
-                            enabled: false
-                        },
-                        readOnly: true,
-                        hover: false,
-                        scrollbar: {
-                            alwaysConsumeMouseWheel: false
-                        },
-                        scrollBeyondLastLine: false,
-                        contextmenu: false
-                    });
-                    window.addEventListener('resize', () =>{
-                        editor.layout();
-                    });
-                });
+            this.createIframe()
         }
+    }
+
+    async createIframe() {
+        const iframe = document.createElement('iframe');
+        iframe.src = '../assets/code-viewer.html';
+
+        const wrapper = this.shadowRoot.querySelector('#iframe-wrapper');
+        wrapper.innerHTML = '';
+        wrapper.appendChild(iframe);
+
+        iframe.contentWindow.addEventListener('load', () => {
+            console.log('shit');
+            iframe.contentWindow.postMessage({
+                code: this.getContent(),
+                language: this.modeMapping[this._extension]
+            }, '*');
+        });
     }
 }
 customElements.define('code-preview', CodePreview);
-window.MonacoEnvironment = {
-    getWorkerUrl: function(workerId, label) {
-        return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
-        self.MonacoEnvironment = {
-          baseUrl: 'https://unpkg.com/monaco-editor@latest/min/'
-        };
-        importScripts('https://unpkg.com/monaco-editor@latest/min/vs/base/worker/workerMain.js');`
-        )}`;
-    }
-};
 
 export class RunCode extends LitElement {
     static styles = css`
@@ -181,14 +162,8 @@ export class RunCode extends LitElement {
         this._jsType = this.getAttribute('data-run-js-type');
     }
 
-    // because monaco editor dont run inside of shadow dom
-    createRenderRoot() {
-        return this;
-    }
-
     render() {
         return html`
-            <style>${RunCode.styles}</style>
             ${this._htmlUrl?html`<code-preview .url=${this._htmlUrl}></code-preview>`:''}
             ${this._cssUrl?html`<code-preview .url=${this._cssUrl}></code-preview>`:''}
             ${this._jsUrl?html`<code-preview .url=${this._jsUrl}></code-preview>`:''}
@@ -215,7 +190,7 @@ export class RunCode extends LitElement {
         const js = this._jsUrl?await (await fetch(this._jsUrl)).text():undefined;
         const css = this._cssUrl?await (await fetch(this._cssUrl)).text():undefined;
 
-        const wrapper = this.querySelector('#iframe-wrapper');
+        const wrapper = this.shadowRoot.querySelector('#iframe-wrapper');
         wrapper.innerHTML = '';
         wrapper.appendChild(iframe);
 
