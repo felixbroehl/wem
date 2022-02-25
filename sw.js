@@ -2,10 +2,7 @@ const cacheName = 'wem';
 
 const staticFiles = [
     "404.html",
-    "README.md",
-    "files.json",
     "index.html",
-    "listFiles.js",
     "sw.js",
     "assets/menu.js",
     "assets/style.css",
