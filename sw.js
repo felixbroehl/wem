@@ -38,6 +38,9 @@ const staticFiles = [
     "components/assets/eye-icon.svg",
     "components/assets/play-icon.svg",
     "components/assets/code-viewer/code-viewer.html",
+    "components/assets/code-viewer/Monokai.json",
+    "components/assets/code-viewer/codicon.ttf",
+    "components/assets/code-viewer/code-viewer.html",
     "components/assets/code-viewer/sw.js",
     "solutions/u1/a3.html",
     "solutions/u1/a4.html",
@@ -188,7 +191,10 @@ const staticFiles = [
 
 const staticImports = [
     'https://cdn.skypack.dev/lit@v2.1.2',
-    'https://cdn.skypack.dev/lit-element-router'
+    'https://cdn.skypack.dev/lit-element-router',
+    'https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;700&display=swap',
+    'https://cdn.skypack.dev/@lukaskl/monaco-editor',
+    'https://unpkg.com/monaco-editor@latest/min/vs/base/worker/workerMain.js'
 ];
 
 self.addEventListener('install', (event) => {
