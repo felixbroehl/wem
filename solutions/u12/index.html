@@ -1,0 +1,28 @@
+<h1>Sicherheit – Übung 12</h1>
+<div class="task">
+    <h2>12.1. Sicherer ArrayWrapper</h2>
+    <p>In der Vorlesung wurde ein ArrayWrapper Exploit gezeigt.</p>
+    <p>Analysieren Sie die Ursache dieses Exploits.</p>
+    <pre>Gedacht ist der Parameter der Set-Funktion für number-Werte. JavaScript hat an dieser Stelle jedoch keine Typsicherheit und somit kann jeder mögliche Datentyp übergeben werden. mit .set('push',...) kann somit auch eine Funktion des Array-Prototyps überschrieben werden. Da die Funktion im Wrapper push aufgerufen wird und vorher überschrieben wurde, kann somit beim Aufruf von append() der innere Array-Kontext "geklaut" werden.</pre>
+    <p>Entwickeln Sie ein Sicherheitskonzept und eine ArrayWrapper-Lösung, die gegen diesen Exploit gewappnet ist.</p>
+    <pre>Sicherheitskonzept: Beim Funktionsaufruf als Erstes prüfen, ob der "pos"-Parameter für get und set ein Integer ist, ansonsten soll ein Fehler geworfen werden.</pre>
+    <run-code data-run-js="a1.js"></run-code>
+    <h2>12.2. WebGoat Injection</h2>
+    <p>Installieren Sie WebGoat.</p>
+    <p>Starten Sie das Docker Image mit WebGoat.</p>
+    <p>Öffnen Sie die Landing Page von WebGoat.</p>
+    <p>Lösen Sie die Aufgaben in (A1) Injection, SQL Injection (Intro).</p>
+    <pre>TODO</pre>
+    <h2>12.3. WebGoat XSS</h2>
+    <p>Installieren Sie WebGoat.</p>
+    <p>Starten Sie das Docker Image mit WebGoat.</p>
+    <p>Öffnen Sie die Landing Page von WebGoat.</p>
+    <p>Lösen Sie die Aufgaben in (A7) Cross-Site Scripting (XSS), Cross Site Scripting.</p>
+    <pre>TODO</pre>
+    <h2>12.3. WebGoat Cross-Site Request Forgeries</h2>
+    <p>Installieren Sie WebGoat.</p>
+    <p>Starten Sie das Docker Image mit WebGoat.</p>
+    <p>Öffnen Sie die Landing Page von WebGoat.</p>
+    <p>Lösen Sie die Aufgaben zu (A8:2013) Request Forgeries, Cross-Site Request Forgeries.</p>
+    <pre>TODO</pre>
+</div>

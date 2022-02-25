@@ -1,0 +1,27 @@
+<h1>Node.js, npm & Deno – Übung 7</h1>
+<div class="task">
+    <h2>7.1 File Generatoren</h2>
+    <p>Schreiben Sie in Node.js zwei Kommandozeilen-Tools, um große Dateien zu erzeugen.</p>
+    <p>node number_file_gen.js 20_000 soll eine Datei mit 20.000 Zeilen erzeugen. In jeder Zeile soll die Zeilennummer und ein Punkt stehen. 20.000 ist dabei ein Parameter des Tools. Jede andere Zahl soll ebenfalls erlaubt sein.</p>
+    <code-preview data-url="number_file_gen.js"></code-preview>
+    <p>node alpha_file_gen.js 123456 soll eine Datei mit 123456 Zeilen erzeugen. In jeder Zeile soll eine Variation mit Wiederholung aller Großbuchstaben (ohne Umlaute) in Reihenfolge stehen.</p>
+    <code-preview data-url="alpha_file_gen.js"></code-preview>
+</div>
+<div class="task">
+    <h2>7.2. Performance Merge</h2>
+    <p>Schreiben Sie in Node.js zwei Programme merge_files.js und merge_streams.js, um große Dateien zu zeilenweise zusammenzuführen, merge_files.js mit fs.readFile und merge_streams.js mit Streams, also createReadFileStream und pipeline.</p>
+    <p>node merge_files.js big_file1.txt big_file2.txt</p>
+    <code-preview data-url="merge_files.js"></code-preview>
+    <p>node merge_streams.js big_file1.txt big_file2.txt</p>
+    <code-preview data-url="merge_streams.js"></code-preview>
+    <p>Messen Sie anschließend die Performanz beider Programme.</p>
+    <pre>merge_files.js für 2 Dateien mit jeweils 20000 Zeilen: 15ms
+merge_streams.js für 2 Dateien mit jeweils 20000 Zeilen: 13ms</pre>
+</div>
+<div class="task">
+    <h2>7.3. Express.js Server</h2>
+    <p>Schreiben Sie einen lokalen Express.js-HTTP-Server für den Merge-Dienst, d.h. auf der lokal angezeigten Webseite kann man zwei Dateien auswählen, um diese zeilenweise zu mergen. Das Ergebnis soll dann in der Webseite erscheinen und zum Download angeboten werden.</p>
+    <p>Arbeiten Sie lokal auf Ihrem Notebook mit localhost.</p>
+    <code-preview data-url="merge_streams_express.js"></code-preview>
+    <code-preview data-url="public/index.html"></code-preview>
+</div>
