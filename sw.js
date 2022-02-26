@@ -40,8 +40,6 @@ const staticFiles = [
     "components/assets/code-viewer/code-viewer.html",
     "components/assets/code-viewer/Monokai.json",
     "components/assets/code-viewer/codicon.ttf",
-    "components/assets/code-viewer/code-viewer.html",
-    "components/assets/code-viewer/sw.js",
     "solutions/u1/a3.html",
     "solutions/u1/a4.html",
     "solutions/u1/a5.html",
