@@ -2,17 +2,17 @@
 <div class="task">
     <h2>7.1 File Generatoren</h2>
     <p>Schreiben Sie in Node.js zwei Kommandozeilen-Tools, um große Dateien zu erzeugen.</p>
-    <p>node number_file_gen.js 20_000 soll eine Datei mit 20.000 Zeilen erzeugen. In jeder Zeile soll die Zeilennummer und ein Punkt stehen. 20.000 ist dabei ein Parameter des Tools. Jede andere Zahl soll ebenfalls erlaubt sein.</p>
+    <p><inline-code-preview>node number_file_gen.js 20_000</inline-code-preview> soll eine Datei mit 20.000 Zeilen erzeugen. In jeder Zeile soll die Zeilennummer und ein Punkt stehen. 20.000 ist dabei ein Parameter des Tools. Jede andere Zahl soll ebenfalls erlaubt sein.</p>
     <code-preview data-url="number_file_gen.js"></code-preview>
-    <p>node alpha_file_gen.js 123456 soll eine Datei mit 123456 Zeilen erzeugen. In jeder Zeile soll eine Variation mit Wiederholung aller Großbuchstaben (ohne Umlaute) in Reihenfolge stehen.</p>
+    <p><inline-code-preview>node alpha_file_gen.js 123456</inline-code-preview> soll eine Datei mit 123456 Zeilen erzeugen. In jeder Zeile soll eine Variation mit Wiederholung aller Großbuchstaben (ohne Umlaute) in Reihenfolge stehen.</p>
     <code-preview data-url="alpha_file_gen.js"></code-preview>
 </div>
 <div class="task">
     <h2>7.2. Performance Merge</h2>
-    <p>Schreiben Sie in Node.js zwei Programme merge_files.js und merge_streams.js, um große Dateien zu zeilenweise zusammenzuführen, merge_files.js mit fs.readFile und merge_streams.js mit Streams, also createReadFileStream und pipeline.</p>
-    <p>node merge_files.js big_file1.txt big_file2.txt</p>
+    <p>Schreiben Sie in Node.js zwei Programme <inline-code-preview>merge_files.js</inline-code-preview> und <inline-code-preview>merge_streams.js</inline-code-preview>, um große Dateien zu zeilenweise zusammenzuführen, <inline-code-preview>merge_files.js</inline-code-preview> mit <inline-code-preview>fs.readFile</inline-code-preview> und <inline-code-preview>merge_streams.js</inline-code-preview> mit Streams, also <inline-code-preview>createReadFileStream</inline-code-preview> und <inline-code-preview>pipeline</inline-code-preview>.</p>
+    <p><inline-code-preview>node merge_files.js big_file1.txt big_file2.txt</inline-code-preview></p>
     <code-preview data-url="merge_files.js"></code-preview>
-    <p>node merge_streams.js big_file1.txt big_file2.txt</p>
+    <p><inline-code-preview>node merge_streams.js big_file1.txt big_file2.txt</inline-code-preview></p>
     <code-preview data-url="merge_streams.js"></code-preview>
     <p>Messen Sie anschließend die Performanz beider Programme.</p>
     <pre>merge_files.js für 2 Dateien mit jeweils 20000 Zeilen: 15ms

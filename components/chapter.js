@@ -119,7 +119,9 @@ class Chapter extends LitElement {
             this.setup = this.chapter;
             (async () => {
                 fetch('/wem/solutions/u' + this.chapter + '/index.html').then(res => res.text()).then(text => {
-                    this.content = text.replace(/(data-url|data-run-html|data-run-css|data-run-js|href)="/g, '$1="/wem/solutions/u' + (this.chapter) + '/');
+                    this.content = text.replace(/(data-url|data-run-html|data-run-css|data-run-js)="/g, '$1="/wem/solutions/u' + (this.chapter) + '/')
+                        .replace(/(<img .*src=")(?!https?:\/\/|\/)/g, '$1/wem/solutions/u' + (this.chapter) + '/')
+                        .replace(/(<a .*href=")(?!https?:\/\/|\/)/g, '$1/wem/solutions/u' + (this.chapter) + '/');
                     this.shadowRoot.querySelector('#content').innerHTML = this.content;
                 })
             })();

@@ -7,6 +7,7 @@ import './chapter.js';
 import './logo-animation.js';
 import './code-preview.js';
 import './run-code.js';
+import './inline-code-preview.js';
 import {nameToUrlPart} from "./utils.js";
 import {chapters} from "./chapters.js";
 
@@ -36,7 +37,6 @@ class App extends router(LitElement) {
             background-color: #fff;
             overflow: auto;
             box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
-            transition: height 2s ease-in-out;
         }
         
         nav .item {
@@ -111,6 +111,7 @@ class App extends router(LitElement) {
                 width: 100%;
                 height: 60px;
                 overflow: hidden;
+                transition: height 1s ease-in-out;
             }
         
             nav.active {

