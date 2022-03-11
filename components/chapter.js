@@ -14,7 +14,7 @@ class Chapter extends LitElement {
         
         #content img {
             max-width: 100%;
-            margin-left: 50%;
+            margin-left: 50% !important;
             transform: translateX(-50%);
         }
         
