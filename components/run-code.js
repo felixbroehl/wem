@@ -53,7 +53,8 @@ export class RunCode extends LitElement {
         _jsUrl: {type: String},
         _cssUrl: {type: String},
         _size: {type: String},
-        _jsType: {type: String}
+        _jsType: {type: String},
+        _hideCode: {type: Boolean}
     };
 
     constructor() {
@@ -63,13 +64,14 @@ export class RunCode extends LitElement {
         this._cssUrl = this.getAttribute('data-run-css');
         this._size = this.getAttribute('data-run-size');
         this._jsType = this.getAttribute('data-run-js-type');
+        this._hideCode = this.getAttribute('data-hide-code')+'' === 'true';
     }
 
     render() {
         return html`
-            ${this._htmlUrl?html`<code-preview .url=${this._htmlUrl}></code-preview>`:''}
-            ${this._cssUrl?html`<code-preview .url=${this._cssUrl}></code-preview>`:''}
-            ${this._jsUrl?html`<code-preview .url=${this._jsUrl}></code-preview>`:''}
+            ${this._htmlUrl && !this._hideCode?html`<code-preview .url=${this._htmlUrl}></code-preview>`:''}
+            ${this._cssUrl && !this._hideCode?html`<code-preview .url=${this._cssUrl}></code-preview>`:''}
+            ${this._jsUrl && !this._hideCode?html`<code-preview .url=${this._jsUrl}></code-preview>`:''}
             <a href="#" class="run-solution-button" @click=${e=>{e.preventDefault();this.run()}}>Lösung ausführen</a>
             <div id="iframe-wrapper"></div>
         `;

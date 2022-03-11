@@ -1,5 +1,9 @@
 import {html, css, LitElement} from 'https://cdn.skypack.dev/lit@v2.1.2';
 
+import Prism from 'https://cdn.skypack.dev/prismjs@v1.x/components/prism-core.min.js';
+
+import { lang_dependencies, lang_aliases } from "./code-preview-languages.js";
+
 export class CodePreview extends LitElement {
     static styles = css`
         .code-preview {
@@ -17,13 +21,70 @@ export class CodePreview extends LitElement {
         
         .code-preview {
             position:relative;
-        }
-        
-        iframe {
             width: 100%;
             height: 350px;
             border: none;
             background-color: #272822;
+            box-sizing: border-box;
+        }
+        
+        #code-wrapper {
+            overflow: auto;
+            height: 100%;
+            padding: 1em;
+            box-sizing: border-box;
+        }
+        
+        code {
+            width: 100%;
+            height: 100%;
+            white-space: pre-wrap !important;
+            font-size: 14px !important;
+        }
+        
+        /**
+         * Loader
+         */
+        #loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%) scale(0.7);
+        }
+        .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .lds-ring div {
+            box-sizing: border-box;
+            display: block;
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border: 8px solid #fff;
+            border-radius: 50%;
+            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            border-color: #fff transparent transparent transparent;
+        }
+        .lds-ring div:nth-child(1) {
+            animation-delay: -0.45s;
+        }
+        .lds-ring div:nth-child(2) {
+            animation-delay: -0.3s;
+        }
+        .lds-ring div:nth-child(3) {
+            animation-delay: -0.15s;
+        }
+        @keyframes lds-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     `;
 
@@ -38,21 +99,43 @@ export class CodePreview extends LitElement {
         CSS: 'css',
         JS: 'javascript',
         JSON: 'json',
-        C: 'c'
+        C: 'c',
+        VUE: 'html'
     }
     isSetup = false;
-    isSetupUpdated = false;
-    iframe;
 
     constructor() {
         super();
         this.url = this.getAttribute('data-url');
     }
 
+    async loadLanguages(languages) {
+        if (typeof languages === 'string') {
+            languages = [languages];
+        }
+
+        for (let lang of languages) {
+            await this.loadLanguage(lang);
+        }
+    }
+
+    async loadLanguage(lang) {
+        let dependencies = lang_dependencies[lang];
+        if (dependencies && dependencies.length) {
+            await this.loadLanguages(dependencies);
+        }
+        if (Prism.languages[lang] === undefined) {
+            await import('https://cdn.skypack.dev/prismjs@v1.x/components/prism-' + lang + '.min.js');
+        }
+    }
+
     render() {
         return html`
+            <link rel="stylesheet" href="https://cdn.skypack.dev/prismjs@v1.x/themes/prism.min.css">
+            <link rel="stylesheet" href="https://cdn.skypack.dev/prismjs@v1.x/themes/prism-okaidia.min.css">
             <div class="code-preview">
-                <div id="iframe-wrapper"></div>
+                <div id="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+                <div id="code-wrapper"><code></code></div>
                 ${this._extension?html`<div class="extension">${this._extension}</div>`:''}
             </div>
         `;
@@ -64,46 +147,38 @@ export class CodePreview extends LitElement {
 
     updated() {
         if (this.url && !this._content) {
-            (async () => {
-                this.setupBox();
-                this._content = await (await fetch(this.url)).text();
-                this.updateBox();
-            })();
-            const urlSplit = this.url.split('.');
-            this._extension = urlSplit[urlSplit.length-1].toUpperCase();
+            if (!this.isSetup) {
+                this.isSetup = true;
+                const urlSplit = this.url.split('.');
+                this._extension = urlSplit[urlSplit.length-1].toUpperCase();
+                (async () => {
+                    await this.setupBox();
+                    this._content = await (await fetch(this.url)).text();
+                    this.updateBox();
+                })();
+            }
         }
     }
 
-    setupBox() {
-        if (!this.isSetup) {
-            this.isSetup = true;
-            this.createIframe().then();
-        }
+    async setupBox() {
+        await this.loadLanguage(this.getLang());
     }
 
     updateBox() {
-        if (!this.isSetupUpdated) {
-            this.isSetupUpdated = true;
-            this.setContent().then();
-        }
+        this.setContent().then();
     }
 
-    async createIframe() {
-        this.iframe = document.createElement('iframe');
-        this.iframe.src = '/wem/components/assets/code-viewer/code-viewer.html';
-
-        const wrapper = this.shadowRoot.querySelector('#iframe-wrapper');
-        wrapper.innerHTML = '';
-        wrapper.appendChild(this.iframe);
+    getLang() {
+        let lang = this.modeMapping[this._extension];
+        return lang_aliases[lang] || lang || 'text';
     }
 
     async setContent() {
-        this.iframe.contentWindow.addEventListener('load', () => {
-            this.iframe.contentWindow.postMessage({
-                code: this.getContent(),
-                language: this.modeMapping[this._extension]
-            }, '*');
-        });
+        const highlighted = Prism.highlight(this.getContent(), Prism.languages[this.getLang()], this.getLang());
+        const codeElement = this.shadowRoot.querySelector('code');
+        codeElement.classList.add('language-' + this.getLang());
+        codeElement.innerHTML = highlighted;
+        this.shadowRoot.querySelector('#loader').remove();
     }
 }
 customElements.define('code-preview', CodePreview);
