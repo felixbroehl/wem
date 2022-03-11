@@ -16,12 +16,14 @@
       return {
         length: 0,
         spaces: 0,
-        words: 0,
-        updateStats: (text) => {
-          this.length = text.length;
-          this.spaces = (text.match(/ /g) || []).length;
-          this.words = text.trim().split(/\s+/).length;
-        }
+        words: 0
+      }
+    },
+    methods: {
+      updateStats: (text) => {
+        this.length = text.length;
+        this.spaces = (text.match(/ /g) || []).length;
+        this.words = text.trim().split(/\s+/).length;
       }
     }
   };
