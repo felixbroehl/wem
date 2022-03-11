@@ -8,6 +8,7 @@ import './logo-animation.js';
 import './code-preview.js';
 import './run-code.js';
 import './inline-code-preview.js';
+import './answer-block.js';
 import {nameToUrlPart} from "./utils.js";
 import {chapters} from "./chapters.js";
 
@@ -142,6 +143,23 @@ class App extends router(LitElement) {
             padding-top: 1em;
             margin-top: 1.5em;
         }
+        
+        /**
+         * Error 404
+         */
+        #page-not-found {
+            text-align: center;
+        }
+        
+        #page-not-found h1 {
+            font-size: 15em;
+        }
+        
+        @media (max-width: 520px) {
+            #page-not-found h1 {
+                font-size: 5em;
+            }
+        }
     `;
 
     static get properties() {
@@ -193,6 +211,11 @@ class App extends router(LitElement) {
             return html`<wem-home></wem-home>`;
         } else if (this.routeData && this.routeData.component === 'chapter') {
             return html`<wem-chapter .chapter=${this.routeData.attributes.chapter}></wem-chapter>`;
+        } else {
+            return html`<div id="page-not-found">
+                <h1>404</h1>
+                <p>Oops. Die angefragte Seite konnte nicht gefunden werden.</p>
+            </div>`
         }
     }
 

@@ -12,8 +12,10 @@ class Chapter extends LitElement {
             color: var(--secondary-color);
         }
         
-        img {
+        #content img {
             max-width: 100%;
+            margin-left: 50%;
+            transform: translateX(-50%);
         }
         
         .open-solution-button {
@@ -47,12 +49,13 @@ class Chapter extends LitElement {
         }
         
         pre {
-            font-family: 'Noto Sans Mono', monospace;
-            border: 1px solid #aaa;
-            background-color: #ddd;
+            font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+            background-color: #272822;;
             padding: 1rem;
             position: relative;
             white-space: pre-wrap;
+            font-size: 14px;
+            color: #fff;
         }
         
         /**

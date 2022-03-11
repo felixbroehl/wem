@@ -40,6 +40,8 @@ export class CodePreview extends LitElement {
             height: 100%;
             white-space: pre-wrap !important;
             font-size: 14px !important;
+            font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+            color: #fff;
         }
         
         /**
