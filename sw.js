@@ -1,4 +1,4 @@
-const cacheName = 'wem-v10';
+const cacheName = 'wem-v12';
 
 const staticFiles = [
     "404.html",
@@ -204,10 +204,16 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.open(cacheName).then((cache) => {
             return cache.match(event.request).then((response) => {
-                return response || fetch(event.request).then((response) => {
-                    cache.put(event.request, response.clone());
-                    return response;
-                });
+                const load = () => {
+                    return fetch(event.request).then((response) => {
+                        cache.put(event.request, response.clone());
+                        return response;
+                    })
+                };
+                if (event.request.url.endsWith("/sw.js")) {
+                    return load() || response;
+                }
+                return response || load();
             });
         })
     );

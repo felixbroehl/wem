@@ -11,14 +11,6 @@ export class CodePreview extends LitElement {
             margin-bottom: 1em;
         }
         
-        .extension {
-            position: absolute;
-            right: 18px;
-            top: 5px;
-            opacity: 0.5;
-            color: #fff;
-        }
-        
         .code-preview {
             position:relative;
             width: 100%;
@@ -29,18 +21,55 @@ export class CodePreview extends LitElement {
         }
         
         #code-wrapper {
-            overflow: auto scroll;
+            overflow: auto;
             height: 100%;
-            padding: 1em;
+            box-sizing: border-box;
+            display: flex;
+        }
+        
+        #line-numbers {
+            white-space: pre-wrap;
+            font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #bebebe;
+            padding: 0.3em;
+            background-color: rgba(0,0,0,0.25);
+            text-align: right;
+            height: fit-content;
+            min-height: 350px;
             box-sizing: border-box;
         }
         
         code {
             width: 100%;
             height: 100%;
-            white-space: pre-wrap !important;
+            white-space: pre !important;
             font-size: 14px !important;
             font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+            color: #fff;
+            padding: 0.3em !important;
+            height: fit-content;
+        }
+        
+        .token.operator {
+            background: transparent !important;
+        }
+        
+        /**
+         * Head toolbar
+         */
+         #code-head-bar {
+            background-color: #101010;
+            color: #fff;
+            padding: 0.3em;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+         }
+         
+         #extension {
+            opacity: 0.5;
             color: #fff;
         }
         
@@ -88,6 +117,23 @@ export class CodePreview extends LitElement {
                 transform: rotate(360deg);
             }
         }
+        
+        /**
+         * Toolbar
+         */
+        ::-webkit-scrollbar {
+            background: #000;
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.5);
+        }
+        
+        ::-webkit-scrollbar-corner {
+            background: #000;
+        }
     `;
 
     static properties = {
@@ -132,13 +178,21 @@ export class CodePreview extends LitElement {
     }
 
     render() {
+        const urlSplit = this.url && this.url.split('/')
+        const fileName = urlSplit && urlSplit[urlSplit.length-1];
         return html`
             <link rel="stylesheet" href="https://cdn.skypack.dev/prismjs@v1.x/themes/prism.min.css">
             <link rel="stylesheet" href="https://cdn.skypack.dev/prismjs@v1.x/themes/prism-okaidia.min.css">
+            <div id="code-head-bar">
+                <span>${fileName}</span>
+                <span id="extension">${this._extension}</span>
+            </div>
             <div class="code-preview">
                 <div id="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
-                <div id="code-wrapper"><code></code></div>
-                ${this._extension?html`<div class="extension">${this._extension}</div>`:''}
+                <div id="code-wrapper">
+                    <div id="line-numbers"></div>
+                    <code></code>
+                </div>
             </div>
         `;
     }
@@ -177,10 +231,17 @@ export class CodePreview extends LitElement {
 
     async setContent() {
         const highlighted = Prism.highlight(this.getContent(), Prism.languages[this.getLang()], this.getLang());
+        const lineNumbers = highlighted.split('\n').map((item, i) => i+1).join('\n');
+        const loader = this.shadowRoot.querySelector('#loader');
+        const lineNumbersElement = this.shadowRoot.querySelector('#line-numbers');
         const codeElement = this.shadowRoot.querySelector('code');
+
+        lineNumbersElement.innerHTML = lineNumbers;
+
         codeElement.classList.add('language-' + this.getLang());
         codeElement.innerHTML = highlighted;
-        this.shadowRoot.querySelector('#loader').remove();
+
+        loader.remove();
     }
 }
 customElements.define('code-preview', CodePreview);

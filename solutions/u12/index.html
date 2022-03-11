@@ -3,9 +3,9 @@
     <h2>12.1. Sicherer ArrayWrapper</h2>
     <p>In der Vorlesung wurde ein ArrayWrapper Exploit gezeigt.</p>
     <p>Analysieren Sie die Ursache dieses Exploits.</p>
-    <pre>Gedacht ist der Parameter der Set-Funktion für number-Werte. JavaScript hat an dieser Stelle jedoch keine Typsicherheit und somit kann jeder mögliche Datentyp übergeben werden. mit .set('push',...) kann somit auch eine Funktion des Array-Prototyps überschrieben werden. Da die Funktion im Wrapper push aufgerufen wird und vorher überschrieben wurde, kann somit beim Aufruf von append() der innere Array-Kontext "geklaut" werden.</pre>
+    <answer-block>Gedacht ist der Parameter der Set-Funktion für number-Werte. JavaScript hat an dieser Stelle jedoch keine Typsicherheit und somit kann jeder mögliche Datentyp übergeben werden. mit .set('push',...) kann somit auch eine Funktion des Array-Prototyps überschrieben werden. Da die Funktion im Wrapper push aufgerufen wird und vorher überschrieben wurde, kann somit beim Aufruf von append() der innere Array-Kontext "geklaut" werden.</answer-block>
     <p>Entwickeln Sie ein Sicherheitskonzept und eine ArrayWrapper-Lösung, die gegen diesen Exploit gewappnet ist.</p>
-    <pre>Sicherheitskonzept: Beim Funktionsaufruf als Erstes prüfen, ob der "pos"-Parameter für get und set ein Integer ist, ansonsten soll ein Fehler geworfen werden.</pre>
+    <answer-block>Sicherheitskonzept: Beim Funktionsaufruf als Erstes prüfen, ob der "pos"-Parameter für get und set ein Integer ist, ansonsten soll ein Fehler geworfen werden.</answer-block>
     <run-code data-run-js="a1.js"></run-code>
     <h2>12.2. WebGoat Injection</h2>
     <p>Lösen Sie die Aufgaben in (A1) Injection, SQL Injection (Intro).</p>

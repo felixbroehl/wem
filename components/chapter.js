@@ -16,6 +16,7 @@ class Chapter extends LitElement {
             max-width: 100%;
             margin-left: 50% !important;
             transform: translateX(-50%);
+            box-shadow: 0px 2px 7px rgb(0,0,0,0.3);
         }
         
         .open-solution-button {
@@ -105,7 +106,7 @@ class Chapter extends LitElement {
                             Vorherige Einheit
                         </div>
                     </wem-link>
-                `:''}
+                `:html`<span></span>`}
                 ${chapters[this.chapter]!==undefined?html`
                     <wem-link href="/wem/${nameToUrlPart(chapters[this.chapter].name)}">
                         <div class="item forward">

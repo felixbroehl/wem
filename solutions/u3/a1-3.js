@@ -9,4 +9,3 @@ function applyf(fun) {
 // Test
 function mul(x,y){return x*y}
 console.log(applyf(mul)(5)(6));
-
