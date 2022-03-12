@@ -1,4 +1,4 @@
-const cacheName = 'wem-v18';
+const cacheName = 'wem-v20';
 
 const staticFiles = [
     "404.html",

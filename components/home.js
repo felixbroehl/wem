@@ -11,7 +11,7 @@ class Home extends LitElement {
         }
 
         #card-menu > wem-link {
-            width: calc(50% - 2em);
+            width: calc(100% / 3 - 2em);
             box-sizing: border-box;
             margin: 1em;
             padding:1em;
@@ -45,6 +45,12 @@ class Home extends LitElement {
             margin-left: -1em;
             margin-top: -1em;
             margin-bottom: 1em;
+        }
+        
+        @media (max-width: 1450px) {
+            #card-menu > wem-link {
+                width: calc(100% / 2 - 2em);
+            }
         }
 
         @media (max-width: 400px) {

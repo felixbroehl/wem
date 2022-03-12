@@ -20,14 +20,20 @@ class Link extends navigator(LitElement) {
     }
     render() {
         return html`
-            <a href='${this.href}' @click='${this.linkClick}'>
+            <a href='${this.href}' @click='${this.linkClick}' target=${this.isExternalHref()?'_blank':''}>
                 <slot></slot>
             </a>
         `;
     }
     linkClick(event) {
-        event.preventDefault();
-        this.navigate(this.href);
+        if (!this.isExternalHref()) {
+            event.preventDefault();
+            this.navigate(this.href);
+        }
+    }
+
+    isExternalHref() {
+        return /^https?:\/\//.test(this.href);
     }
 }
 

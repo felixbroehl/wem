@@ -16,12 +16,14 @@ import {chapters} from "./chapters.js";
 class App extends router(LitElement) {
     static styles = css`
         main {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 1200px;
+            width: 100%;
+            margin-left: 50%;
             padding: 1em;
             min-height: 100%;
-            transform: translateX(100px);
+            transform: translateX(calc(-50% + 100px));
             background-color: #fff;
+            box-sizing: border-box;
         }
         
         /**
@@ -47,11 +49,27 @@ class App extends router(LitElement) {
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
             text-decoration: none;
+            margin-bottom: -1px;
         }
         
         nav .item.active {
             color: #000 !important;
             font-weight: bold;
+        }
+        
+        nav .github-item {
+            align-items: center;
+            display: flex;
+            margin-top: 2em;
+        }
+        
+        nav .github-item::before {
+            background-image: url('/wem/assets/img/github.svg');
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-size: contain;
+            margin-right: 0.5em;
         }
         
         #burger-button, #burger-button:before, #burger-button:after {
@@ -104,6 +122,12 @@ class App extends router(LitElement) {
             width: 100%;
         }
         
+        @media (max-width: 1450px) {
+            main {
+                max-width: 800px;
+            }
+        }
+        
         @media (max-width: 1050px) {
             #logo img {
                 height: 60px;
@@ -123,7 +147,7 @@ class App extends router(LitElement) {
         
             main {
                 margin-top: 60px;
-                transform: none;
+                transform: translateX(-50%);
             }
         
             #burger-button, #burger-button:before, #burger-button:after {
@@ -233,8 +257,10 @@ class App extends router(LitElement) {
                 <wem-link href="/wem/" id="logo" @click="${this.hideMenu}"><img src="assets/img/logo.svg"></wem-link>
                 <wem-link href="/wem/" @click="${this.hideMenu}"><div class="item ${this.route === App.routes[0].name ? 'active' : ''}">0. Übersicht</div></wem-link>
                 ${chapters.map((chapter, i) => html`
-                    <wem-link href="/wem/${nameToUrlPart(chapter.name)}" @click="${this.toggleMenu}"><div class="item ${this.route === 'u'+(i+1) ? 'active' : ''}">${i+1}. ${chapter.name}</div></wem-link>
+                    <wem-link href="/wem/${nameToUrlPart(chapter.name)}" @click="${this.hideMenu}"><div class="item ${this.route === 'u'+(i+1) ? 'active' : ''}">${i+1}. ${chapter.name}</div></wem-link>
                 `)}
+                <wem-link href="https://github.com/felixbroehl/wem" id="logo" @click="${this.hideMenu}"><div class="item github-item">Open on Github</div></wem-link>
+                <wem-link href="/wem/credits" id="logo" @click="${this.hideMenu}"><div class="item ${this.route === 'credits' ? 'active' : ''}">Credits</div></wem-link>
             </nav>
         `;
     }

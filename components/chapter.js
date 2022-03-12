@@ -13,7 +13,7 @@ class Chapter extends LitElement {
         }
         
         #content img {
-            max-width: 100%;
+            max-width: min(100%, 800px);
             margin-left: 50% !important;
             transform: translateX(-50%);
             box-shadow: 0px 2px 7px rgb(0,0,0,0.3);
@@ -93,11 +93,14 @@ class Chapter extends LitElement {
             this.setup = this.chapter;
             (async () => {
                 fetch('/wem/solutions/u' + this.chapter + '/index.html').then(res => res.text()).then(text => {
-                    this.content = text.replace(/(<code-preview .*src=")/g, '$1/wem/solutions/u' + (this.chapter) + '/')
-                        .replace(/(<run-code .*(htmlSrc|cssSrc|jsSrc)=")/g, '$1/wem/solutions/u' + (this.chapter) + '/')
-                        .replace(/(<open-solution-button .*href=")/g, '$1/wem/solutions/u' + (this.chapter) + '/')
-                        .replace(/(<img .*src=")(?!https?:\/\/|\/)/g, '$1/wem/solutions/u' + (this.chapter) + '/')
-                        .replace(/(<a .*href=")(?!https?:\/\/|\/)/g, '$1/wem/solutions/u' + (this.chapter) + '/');
+                    const replacement = '$1/wem/solutions/u' + (this.chapter) + '/';
+                    this.content = text.replace(/(<code-preview .*src=")/g, replacement)
+                        .replace(/(<run-code .*htmlSrc=")/g, replacement)
+                        .replace(/(<run-code .*cssSrc=")/g, replacement)
+                        .replace(/(<run-code .*jsSrc=")/g, replacement)
+                        .replace(/(<open-solution-button .*href=")/g, replacement)
+                        .replace(/(<img .*src=")(?!https?:\/\/|\/)/g, replacement)
+                        .replace(/(<a .*href=")(?!https?:\/\/|\/)/g, replacement);
                     this.shadowRoot.querySelector('#content').innerHTML = this.content;
                 })
             })();
