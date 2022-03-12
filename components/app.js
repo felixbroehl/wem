@@ -236,7 +236,7 @@ class App extends router(LitElement) {
             return html`<wem-home></wem-home>`;
         } else if (this.routeData && this.routeData.component === 'chapter') {
             return html`<wem-chapter .chapter=${this.routeData.attributes.chapter}></wem-chapter>`;
-        } else if (this.routeData && this.routeData.component === 'page-not-found') {
+        } else if (this.routeData && this.routeData.component === 'not-found') {
             return html`<div id="page-not-found">
                 <h1>404</h1>
                 <p>Oops. Die angefragte Seite konnte nicht gefunden werden.</p>
