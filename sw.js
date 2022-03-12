@@ -1,4 +1,4 @@
-const cacheName = 'wem-v20';
+const cacheName = 'wem-v21';
 
 const staticFiles = [
     "404.html",
@@ -232,7 +232,13 @@ const staticImports = [
     'https://cdn.skypack.dev/lit-element-router',
     'https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap',
     'https://cdn.skypack.dev/prismjs@v1.x/themes/prism-okaidia.min.css',
-    'https://cdn.skypack.dev/prismjs@v1.x/components/prism-core.min.js'
+    'https://cdn.skypack.dev/prismjs@v1.x/components/prism-core.min.js',
+    'https://cdn.skypack.dev/prismjs@v1.x/components/prism-clike.min.js',
+    'https://cdn.skypack.dev/prismjs@v1.x/components/prism-javascript.min.js',
+    'https://cdn.skypack.dev/prismjs@v1.x/components/prism-markdown.min.js',
+    'https://cdn.skypack.dev/prismjs@v1.x/components/prism-css.min.js',
+    'https://cdn.skypack.dev/prismjs@v1.x/components/prism-json.min.js',
+    'https://cdn.skypack.dev/prismjs@v1.x/components/prism-c.min.js'
 ];
 
 self.addEventListener('install', (event) => {
