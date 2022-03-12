@@ -63,7 +63,7 @@ class App extends router(LitElement) {
             margin-top: 2em;
         }
         
-        nav .github-item::before {
+        nav .github-item:before {
             background-image: url('/wem/assets/img/github.svg');
             content: "";
             width: 30px;
@@ -178,6 +178,13 @@ class App extends router(LitElement) {
         
         #page-not-found h1 {
             font-size: 15em;
+        }
+        
+        #page-not-found h1:after {
+            content: "|";
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 50%) rotate(-90deg);
         }
         
         @media (max-width: 520px) {
