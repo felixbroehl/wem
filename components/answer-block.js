@@ -20,13 +20,8 @@ export class AnswerBlock extends LitElement {
 
     render() {
         return html`
-          <pre><slot></slot></pre>
+            <pre><slot></slot></pre>
         `;
     }
-
-    run() {
-        this.createIframe();
-    }
-
 }
 customElements.define('answer-block', AnswerBlock);

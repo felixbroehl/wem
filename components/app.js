@@ -9,6 +9,7 @@ import './code-preview.js';
 import './run-code.js';
 import './inline-code-preview.js';
 import './answer-block.js';
+import './open-solution-button.js';
 import {nameToUrlPart} from "./utils.js";
 import {chapters} from "./chapters.js";
 

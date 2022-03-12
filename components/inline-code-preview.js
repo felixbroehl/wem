@@ -23,13 +23,8 @@ export class InlineCodePreview extends LitElement {
 
     render() {
         return html`
-          <pre><slot></slot></pre>
+            <pre><slot></slot></pre>
         `;
     }
-
-    run() {
-        this.createIframe();
-    }
-
 }
 customElements.define('inline-code-preview', InlineCodePreview);

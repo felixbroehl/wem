@@ -6,7 +6,7 @@
     <answer-block>Gedacht ist der Parameter der Set-Funktion für number-Werte. JavaScript hat an dieser Stelle jedoch keine Typsicherheit und somit kann jeder mögliche Datentyp übergeben werden. mit .set('push',...) kann somit auch eine Funktion des Array-Prototyps überschrieben werden. Da die Funktion im Wrapper push aufgerufen wird und vorher überschrieben wurde, kann somit beim Aufruf von append() der innere Array-Kontext "geklaut" werden.</answer-block>
     <p>Entwickeln Sie ein Sicherheitskonzept und eine ArrayWrapper-Lösung, die gegen diesen Exploit gewappnet ist.</p>
     <answer-block>Sicherheitskonzept: Beim Funktionsaufruf als Erstes prüfen, ob der "pos"-Parameter für get und set ein Integer ist, ansonsten soll ein Fehler geworfen werden.</answer-block>
-    <run-code data-run-js="a1.js"></run-code>
+    <run-code jsSrc="a1.js"></run-code>
     <h2>12.2. WebGoat Injection</h2>
     <p>Lösen Sie die Aufgaben in (A1) Injection, SQL Injection (Intro).</p>
     <p><b>Aufgabe 2:</b></p>
@@ -60,15 +60,15 @@
     <p>Lösen Sie die Aufgaben zu (A8:2013) Request Forgeries, Cross-Site Request Forgeries.</p>
     <p><b>Aufgabe 3:</b></p>
     <p>Ziel von Aufgabe 3 war es eine simple CSRF-Attacke durchzuführen in WebGoat. Dafür konnte folgende HTML-Datei genutzt werden:</p>
-    <code-preview data-url="webgoat/csrf/l2.html"></code-preview>
+    <code-preview src="webgoat/csrf/l2.html"></code-preview>
     <img src="webgoat/csrf/l2.png" width="500" />
     <p><b>Aufgabe 4:</b></p>
     <p>Ziel von Aufgabe 4 war es ein Bewertung für ein Bild abzusetzen als CSRF-Attacke in WebGoat. Dafür konnte folgende HTML-Datei genutzt werden:</p>
-    <code-preview data-url="webgoat/csrf/l3.html"></code-preview>
+    <code-preview src="webgoat/csrf/l3.html"></code-preview>
     <p>Dies war erfolgreich:</p>
     <img src="webgoat/csrf/l3.png" width="300" />
     <p><b>Aufgabe 7:</b></p>
     <p>Ziel von Aufgabe 7 war es ein application/json-Anfrage zu senden. Hierfür wurde jedoch die Content-Type-Prüfung im Backend vergessen. Eine CSRF-Attacke konnte als text/plain ausgeführt werden mit folgender HTML-Datei:</p>
-    <code-preview data-url="webgoat/csrf/l6.html"></code-preview>
+    <code-preview src="webgoat/csrf/l6.html"></code-preview>
     <img src="webgoat/csrf/l6.png" width="500" />
 </div>

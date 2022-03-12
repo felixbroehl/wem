@@ -49,29 +49,23 @@ export class RunCode extends LitElement {
     `;
 
     static properties = {
-        _htmlUrl: {type: String},
-        _jsUrl: {type: String},
-        _cssUrl: {type: String},
-        _size: {type: String},
-        _jsType: {type: String},
-        _hideCode: {type: Boolean}
+        htmlSrc: {type: String},
+        jsSrc: {type: String},
+        cssSrc: {type: String},
+        size: {type: String},
+        jsType: {type: String},
+        hideCode: {type: Boolean}
     };
 
     constructor() {
         super();
-        this._htmlUrl = this.getAttribute('data-run-html');
-        this._jsUrl = this.getAttribute('data-run-js');
-        this._cssUrl = this.getAttribute('data-run-css');
-        this._size = this.getAttribute('data-run-size');
-        this._jsType = this.getAttribute('data-run-js-type');
-        this._hideCode = this.getAttribute('data-hide-code')+'' === 'true';
     }
 
     render() {
         return html`
-            ${this._htmlUrl && !this._hideCode?html`<code-preview .url=${this._htmlUrl}></code-preview>`:''}
-            ${this._cssUrl && !this._hideCode?html`<code-preview .url=${this._cssUrl}></code-preview>`:''}
-            ${this._jsUrl && !this._hideCode?html`<code-preview .url=${this._jsUrl}></code-preview>`:''}
+            ${this.htmlSrc && !this.hideCode?html`<code-preview src=${this.htmlSrc}></code-preview>`:''}
+            ${this.cssSrc && !this.hideCode?html`<code-preview src=${this.cssSrc}></code-preview>`:''}
+            ${this.jsSrc && !this.hideCode?html`<code-preview src=${this.jsSrc}></code-preview>`:''}
             <a href="#" class="run-solution-button" @click=${e=>{e.preventDefault();this.run()}}>Lösung ausführen</a>
             <div id="iframe-wrapper"></div>
         `;
@@ -84,16 +78,16 @@ export class RunCode extends LitElement {
     async createIframe() {
         const iframe = document.createElement('iframe');
         iframe.classList.add('run-iframe');
-        iframe.src = this._htmlUrl?this._htmlUrl:'/wem/components/assets/console.html';
-        if (this._size === 'middle') {
+        iframe.src = this.htmlSrc?this.htmlSrc:'/wem/components/assets/console.html';
+        if (this.size === 'middle') {
             iframe.classList.add('size-middle');
-        } else if (this._size === 'large') {
+        } else if (this.size === 'large') {
             iframe.classList.add('size-large');
         }
 
         // fetch js and css
-        const js = this._jsUrl?await (await fetch(this._jsUrl)).text():undefined;
-        const css = this._cssUrl?await (await fetch(this._cssUrl)).text():undefined;
+        const js = this.jsSrc?await (await fetch(this.jsSrc)).text():undefined;
+        const css = this.cssSrc?await (await fetch(this.cssSrc)).text():undefined;
 
         const wrapper = this.shadowRoot.querySelector('#iframe-wrapper');
         wrapper.innerHTML = '';
@@ -106,8 +100,8 @@ export class RunCode extends LitElement {
             if (js) {
                 const script = document.createElement('script');
                 script.text = js;
-                if (this._jsType) {
-                    script.type = this._jsType;
+                if (this.jsType) {
+                    script.type = this.jsType;
                 }
                 iframeHeadElement.appendChild(script);
             }

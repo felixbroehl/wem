@@ -119,7 +119,7 @@ export class CodePreview extends LitElement {
         }
         
         /**
-         * Toolbar
+         * Scrollbar
          */
         ::-webkit-scrollbar {
             background: #000;
@@ -133,11 +133,18 @@ export class CodePreview extends LitElement {
         
         ::-webkit-scrollbar-corner {
             background: #000;
+        }        
+                
+        /**
+         * Selection background color
+         */
+        ::selection {
+            background-color: rgba(var(--primary-color-rgb),0.5);
         }
     `;
 
     static properties = {
-        url: {type: String},
+        src: {type: String},
         _content: {type: String},
         _extension: {type: String}
     };
@@ -154,7 +161,6 @@ export class CodePreview extends LitElement {
 
     constructor() {
         super();
-        this.url = this.getAttribute('data-url');
     }
 
     async loadLanguages(languages) {
@@ -178,8 +184,8 @@ export class CodePreview extends LitElement {
     }
 
     render() {
-        const urlSplit = this.url && this.url.split('/')
-        const fileName = urlSplit && urlSplit[urlSplit.length-1];
+        const srcSplit = this.src && this.src.split('/')
+        const fileName = srcSplit && srcSplit[srcSplit.length-1];
         return html`
             <link rel="stylesheet" href="https://cdn.skypack.dev/prismjs@v1.x/themes/prism-okaidia.min.css">
             <div id="code-head-bar">
@@ -201,14 +207,14 @@ export class CodePreview extends LitElement {
     }
 
     updated() {
-        if (this.url && !this._content) {
+        if (this.src && !this._content) {
             if (!this.isSetup) {
                 this.isSetup = true;
-                const urlSplit = this.url.split('.');
-                this._extension = urlSplit[urlSplit.length-1].toUpperCase();
+                const srcSplit = this.src.split('.');
+                this._extension = srcSplit[srcSplit.length-1].toUpperCase();
                 (async () => {
                     await this.setupBox();
-                    this._content = await (await fetch(this.url)).text();
+                    this._content = await (await fetch(this.src)).text();
                     this.updateBox();
                 })();
             }

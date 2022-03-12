@@ -2,66 +2,66 @@
 <div class="task">
     <h2>3.1 Funktionen in JavaScript</h2>
     <p>Schreiben Sie eine Funktion <inline-code-preview>identity_function()</inline-code-preview>, die ein Argument als Parameter entgegen nimmt und eine Funktion zurück gibt, die dieses Argument zurück gibt.</p>
-    <run-code data-run-js="a1-1.js"></run-code>
+    <run-code jsSrc="a1-1.js"></run-code>
     <p>Schreiben Sie eine Addier-Funktion <inline-code-preview>addf()</inline-code-preview>, so dass <inline-code-preview>addf(x)(y)</inline-code-preview> genau <inline-code-preview>x + y</inline-code-preview> zurück gibt. (Es haben also zwei Funktionsaufrufe zu erfolgen. <inline-code-preview>addf(x)</inline-code-preview> liefert eine Funktion, die auf <inline-code-preview>y</inline-code-preview> angewandt wird.)</p>
-    <run-code data-run-js="a1-2.js"></run-code>
+    <run-code jsSrc="a1-2.js"></run-code>
     <p>Schreiben Sie eine Funktion <inline-code-preview>applyf()</inline-code-preview>, die aus einer binären Funktion wie <inline-code-preview>add(x,y)</inline-code-preview> eine Funktion addfberechnet, die mit zwei Aufrufen das gleiche Ergebnis liefert, z.B. <inline-code-preview>addf = applyf(add)</inline-code-preview>; <inline-code-preview>addf(x)(y)</inline-code-preview> soll <inline-code-preview>add(x,y)</inline-code-preview> liefern. Entsprechend <inline-code-preview>applyf(mul)(5)(6)</inline-code-preview> soll <inline-code-preview>30</inline-code-preview> liefern, wenn mul die binäre Multiplikation ist.</p>
-    <run-code data-run-js="a1-3.js"></run-code>
+    <run-code jsSrc="a1-3.js"></run-code>
     <p>Schreiben Sie eine Funktion <inline-code-preview>curry()</inline-code-preview> (von Currying), die eine binäre Funktion und ein Argument nimmt, um daraus eine Funktion zu erzeugen, die ein zweites Argument entgegen nimmt, z.B. <inline-code-preview>add3 = curry(add, 3)</inline-code-preview>; <inline-code-preview>add3(4)</inline-code-preview> ergibt <inline-code-preview>7</inline-code-preview>. <inline-code-preview>curry(mul, 5)(6)</inline-code-preview> ergibt <inline-code-preview>30</inline-code-preview>.</p>
-    <run-code data-run-js="a1-4.js"></run-code>
+    <run-code jsSrc="a1-4.js"></run-code>
     <p>Erzeugen Sie die <inline-code-preview>inc</inline-code-preview>-Funktion mit Hilfe einer der Funktionen <inline-code-preview>addf</inline-code-preview>, <inline-code-preview>applyf</inline-code-preview> und <inline-code-preview>curry</inline-code-preview> aus den letzten Aufgaben, ohne die Funktion <inline-code-preview>inc()</inline-code-preview> selbst zu implementieren. (<inline-code-preview>inc(x)</inline-code-preview> soll immer <inline-code-preview>x + 1</inline-code-preview> ergeben und lässt sich natürlich auch direkt implementieren. Das ist aber hier nicht die Aufgabe.) Vielleicht schaffen Sie es auch, drei Varianten der <inline-code-preview>inc()</inline-code-preview>-Implementierung zu schreiben?</p>
-    <run-code data-run-js="a1-5.js"></run-code>
+    <run-code jsSrc="a1-5.js"></run-code>
     <p>Schreiben Sie eine Funktion <inline-code-preview>methodize()</inline-code-preview>, die eine binäre Funktion (z.B. <inline-code-preview>add</inline-code-preview>, <inline-code-preview>mul</inline-code-preview>) in eine unäre Methode verwandelt. Nach <inline-code-preview>Number.prototype.add = methodize(add)</inline-code-preview>; soll <inline-code-preview>(3).add(4)</inline-code-preview> genau <inline-code-preview>7</inline-code-preview> ergeben.</p>
-    <run-code data-run-js="a1-6.js"></run-code>
+    <run-code jsSrc="a1-6.js"></run-code>
     <p>Schreiben Sie eine Funktion <inline-code-preview>demethodize()</inline-code-preview>, die eine unäre Methode (z.B. <inline-code-preview>add</inline-code-preview>, <inline-code-preview>mul</inline-code-preview>) in eine binäre Funktion umwandelt. <inline-code-preview>demethodize(Number.prototype.add)(5, 6)</inline-code-preview> soll <inline-code-preview>11</inline-code-preview> ergeben.</p>
-    <run-code data-run-js="a1-7.js"></run-code>
+    <run-code jsSrc="a1-7.js"></run-code>
     <p>Schreiben Sie eine Funktion <inline-code-preview>twice()</inline-code-preview>, die eine binäre Funktion in eine unäre Funktion umwandelt, die den einen Parameter zweimal weiter reicht. Z.B. <inline-code-preview>var double = twice(add)</inline-code-preview>; <inline-code-preview>double(11)</inline-code-preview> soll <inline-code-preview>22</inline-code-preview> ergeben; <inline-code-preview>var square = twice(mul)</inline-code-preview>; <inline-code-preview>square(11)</inline-code-preview> soll <inline-code-preview>mul(11,11) === 121</inline-code-preview> ergeben.</p>
-    <run-code data-run-js="a1-8.js"></run-code>
+    <run-code jsSrc="a1-8.js"></run-code>
     <p>Schreiben Sie eine Funktion <inline-code-preview>composeu()</inline-code-preview>, die zwei unäre Funktionen in eine einzelne unäre Funktion transformiert, die beide nacheinander aufruft, z.B. soll <inline-code-preview>composeu(double, square)(3)</inline-code-preview> genau <inline-code-preview>36</inline-code-preview> ergeben.</p>
-    <run-code data-run-js="a1-9.js"></run-code>
+    <run-code jsSrc="a1-9.js"></run-code>
     <p>Schreiben Sie eine Funktion <inline-code-preview>composeb()</inline-code-preview>, die zwei binäre Funktionen in eine einzelne Funktion transformiert, die beide nacheinander aufruft, z.B. <inline-code-preview>composeb(add, mul)(2, 3, 5)</inline-code-preview> soll <inline-code-preview>25</inline-code-preview> ergeben.</p>
-    <run-code data-run-js="a1-10.js"></run-code>
+    <run-code jsSrc="a1-10.js"></run-code>
     <p>Schreiben Sie eine Funktion <inline-code-preview>once()</inline-code-preview>, die einer anderen Funktion nur einmal erlaubt, aufgerufen zu werden, z.B. <inline-code-preview>add_once = once(add)</inline-code-preview>; <inline-code-preview>add_once(3, 4)</inline-code-preview> soll beim ersten Mal <inline-code-preview>7</inline-code-preview> ergeben, beim zweiten Mal soll jedoch <inline-code-preview>add_once(3, 4)</inline-code-preview> einen Fehlerabbruch bewirken.</p>
-    <run-code data-run-js="a1-11.js"></run-code>
+    <run-code jsSrc="a1-11.js"></run-code>
     <p>Schreiben Sie eine Fabrik-Funktion <inline-code-preview>counterf()</inline-code-preview>, die zwei Funktionen <inline-code-preview>inc()</inline-code-preview> und <inline-code-preview>dec()</inline-code-preview> berechnet, die einen Zähler hoch- und herunterzählen. Z.B. <inline-code-preview>counter = counterf(10)</inline-code-preview>; Dann soll <inline-code-preview>counter.inc()</inline-code-preview> <inline-code-preview>11</inline-code-preview> und <inline-code-preview>counter.dec()</inline-code-preview> wieder <inline-code-preview>10</inline-code-preview> ergeben.</p>
-    <run-code data-run-js="a1-12.js"></run-code>
+    <run-code jsSrc="a1-12.js"></run-code>
     <p>Schreiben Sie eine rücknehmbare Funktion <inline-code-preview>revocable()</inline-code-preview>, die als Parameter eine Funktion nimmt und diese bei Aufruf ausführt. Sobald die Funktion aber mit <inline-code-preview>revoke()</inline-code-preview> zurück genommen wurde, führt ein erneuter Aufruf zu einem Fehler.</p>
-    <run-code data-run-js="a1-13.js"></run-code>
+    <run-code jsSrc="a1-13.js"></run-code>
     <p>Implementieren Sie ein "Array Wrapper"-Objekt mit den Methoden get, store und append, so dass ein Angreifer keinen Zugriff auf das innere, private Array hat.</p>
-    <run-code data-run-js="a1-14.js"></run-code>
+    <run-code jsSrc="a1-14.js"></run-code>
 </div>
 <div class="task">
     <h2>3.2: Advanced Functional JavaScript Programming</h2>
     <p>Make a function that makes a publish/subscribe object. It will reliably deliver all publications to all subscribers in the right order.</p>
-    <run-code data-run-js="a2-1.js"></run-code>
+    <run-code jsSrc="a2-1.js"></run-code>
     <p>Make a factory that makes functions that generate unique symbols.</p>
-    <run-code data-run-js="a2-2.js"></run-code>
+    <run-code jsSrc="a2-2.js"></run-code>
     <p>Make a function that returns a function that will return the next fibonacci number.</p>
-    <run-code data-run-js="a2-3.js"></run-code>
+    <run-code jsSrc="a2-3.js"></run-code>
     <p>Write a function that adds from many invocations, until it sees an empty invocation.</p>
-    <run-code data-run-js="a2-4.js"></run-code>
+    <run-code jsSrc="a2-4.js"></run-code>
     <p>Write a function that will take a binary function and apply it to many invocations.</p>
-    <run-code data-run-js="a2-5.js"></run-code>
+    <run-code jsSrc="a2-5.js"></run-code>
     <p>Write a function <inline-code-preview>m</inline-code-preview> that takes a value and an optional source string and returns them in an object.</p>
-    <run-code data-run-js="a2-6.js"></run-code>
+    <run-code jsSrc="a2-6.js"></run-code>
     <p>Write a function <inline-code-preview>addm</inline-code-preview> that takes two <inline-code-preview>m</inline-code-preview> objects and returns an <inline-code-preview>m</inline-code-preview> object.</p>
-    <run-code data-run-js="a2-7.js"></run-code>
+    <run-code jsSrc="a2-7.js"></run-code>
     <p>Write a function <inline-code-preview>binarymf</inline-code-preview> that takes a binary function and a string and returns a function that acts on <inline-code-preview>m</inline-code-preview> objects.</p>
-    <run-code data-run-js="a2-8.js"></run-code>
+    <run-code jsSrc="a2-8.js"></run-code>
     <p>Modify function <inline-code-preview>binarymf</inline-code-preview> so that the functions it produces can accept arguments that are either numbers or <inline-code-preview>m</inline-code-preview> objects.</p>
-    <run-code data-run-js="a2-9.js"></run-code>
+    <run-code jsSrc="a2-9.js"></run-code>
     <p>Write function <inline-code-preview>unarymf</inline-code-preview>, which is like <inline-code-preview>binarymf</inline-code-preview> except that it acts on unary functions.</p>
-    <run-code data-run-js="a2-10.js"></run-code>
+    <run-code jsSrc="a2-10.js"></run-code>
     <p>Write a function that takes the lengths of two sides of a triangle and computes the length of the hypotenuse. (Hint: <inline-code-preview>c2 = a2 + b2</inline-code-preview>)</p>
-    <run-code data-run-js="a2-11.js"></run-code>
+    <run-code jsSrc="a2-11.js"></run-code>
     <p>Write a function that evaluates array expressions.</p>
-    <run-code data-run-js="a2-12.js"></run-code>
+    <run-code jsSrc="a2-12.js"></run-code>
     <p>Make a function that stores a value in a variable.</p>
-    <run-code data-run-js="a2-13.js"></run-code>
+    <run-code jsSrc="a2-13.js"></run-code>
     <p>Make a function that takes a binary function, two functions that provide operands, and a function that takes the result.</p>
-    <run-code data-run-js="a2-14.js"></run-code>
+    <run-code jsSrc="a2-14.js"></run-code>
     <p>Make a function that takes a unary function, and returns a function that takes an argument and a callback.</p>
-    <run-code data-run-js="a2-15.js"></run-code>
+    <run-code jsSrc="a2-15.js"></run-code>
     <p>Make a function that takes a binary function, and returns a function that takes two arguments and a callback.</p>
-    <run-code data-run-js="a2-16.js"></run-code>
+    <run-code jsSrc="a2-16.js"></run-code>
 </div>

@@ -1,8 +1,7 @@
-const cacheName = 'wem-v15';
+const cacheName = 'wem-v18';
 
 const staticFiles = [
     "404.html",
-    "files.json",
     "index.html",
     "listFiles.js",
     "sw.js",
@@ -37,6 +36,7 @@ const staticFiles = [
     "components/inline-code-preview.js",
     "components/link.js",
     "components/logo-animation.js",
+    "components/open-solution-button.js",
     "components/run-code.js",
     "components/utils.js",
     "components/assets/arrow.svg",
