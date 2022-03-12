@@ -181,7 +181,6 @@ export class CodePreview extends LitElement {
         const urlSplit = this.url && this.url.split('/')
         const fileName = urlSplit && urlSplit[urlSplit.length-1];
         return html`
-            <link rel="stylesheet" href="https://cdn.skypack.dev/prismjs@v1.x/themes/prism.min.css">
             <link rel="stylesheet" href="https://cdn.skypack.dev/prismjs@v1.x/themes/prism-okaidia.min.css">
             <div id="code-head-bar">
                 <span>${fileName}</span>

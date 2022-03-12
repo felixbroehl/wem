@@ -1,10 +1,13 @@
-const cacheName = 'wem-v12';
+const cacheName = 'wem-v15';
 
 const staticFiles = [
     "404.html",
+    "files.json",
     "index.html",
+    "listFiles.js",
     "sw.js",
     "assets/style.css",
+    "assets/img/favicon.ico",
     "assets/img/logo.svg",
     "assets/img/u1.svg",
     "assets/img/u10.svg",
@@ -24,11 +27,14 @@ const staticFiles = [
     "assets/manifest/icon-384x384.png",
     "assets/manifest/icon-512x512.png",
     "assets/manifest/manifest.json",
+    "components/answer-block.js",
     "components/app.js",
     "components/chapter.js",
     "components/chapters.js",
+    "components/code-preview-languages.js",
     "components/code-preview.js",
     "components/home.js",
+    "components/inline-code-preview.js",
     "components/link.js",
     "components/logo-animation.js",
     "components/run-code.js",
@@ -42,6 +48,25 @@ const staticFiles = [
     "solutions/u1/a5.html",
     "solutions/u1/index.html",
     "solutions/u10/index.html",
+    "solutions/u10/a1/dist/favicon.ico",
+    "solutions/u10/a1/dist/index.html",
+    "solutions/u10/a1/dist/css/app.83e760de.css",
+    "solutions/u10/a1/dist/js/app.28d7b81c.js",
+    "solutions/u10/a1/dist/js/app.28d7b81c.js.map",
+    "solutions/u10/a1/dist/js/chunk-vendors.e7c769f2.js",
+    "solutions/u10/a1/dist/js/chunk-vendors.e7c769f2.js.map",
+    "solutions/u10/a1/src/App.vue",
+    "solutions/u10/a1/src/main.js",
+    "solutions/u10/a1/src/components/TextCounter.vue",
+    "solutions/u10/a2/dist/favicon.ico",
+    "solutions/u10/a2/dist/index.html",
+    "solutions/u10/a2/dist/css/app.8e257bfa.css",
+    "solutions/u10/a2/dist/js/app.32924eb0.js",
+    "solutions/u10/a2/dist/js/app.32924eb0.js.map",
+    "solutions/u10/a2/dist/js/chunk-vendors.74a47ef3.js",
+    "solutions/u10/a2/dist/js/chunk-vendors.74a47ef3.js.map",
+    "solutions/u10/a2/src/App.vue",
+    "solutions/u10/a2/src/components/MenuBar.vue",
     "solutions/u11/a1.js",
     "solutions/u11/a1.wat",
     "solutions/u11/a2.c",
@@ -53,6 +78,28 @@ const staticFiles = [
     "solutions/u11/a2/main.wasm",
     "solutions/u12/a1.js",
     "solutions/u12/index.html",
+    "solutions/u12/webgoat/csrf/l2.html",
+    "solutions/u12/webgoat/csrf/l2.png",
+    "solutions/u12/webgoat/csrf/l3.html",
+    "solutions/u12/webgoat/csrf/l3.png",
+    "solutions/u12/webgoat/csrf/l6.html",
+    "solutions/u12/webgoat/csrf/l6.png",
+    "solutions/u12/webgoat/sql/l1.png",
+    "solutions/u12/webgoat/sql/l10.png",
+    "solutions/u12/webgoat/sql/l11.png",
+    "solutions/u12/webgoat/sql/l12.png",
+    "solutions/u12/webgoat/sql/l2.png",
+    "solutions/u12/webgoat/sql/l3.png",
+    "solutions/u12/webgoat/sql/l4.png",
+    "solutions/u12/webgoat/sql/l8.png",
+    "solutions/u12/webgoat/sql/l9.png",
+    "solutions/u12/webgoat/xss/l1.png",
+    "solutions/u12/webgoat/xss/l10_1.png",
+    "solutions/u12/webgoat/xss/l10_2.png",
+    "solutions/u12/webgoat/xss/l11_1.png",
+    "solutions/u12/webgoat/xss/l11_2.png",
+    "solutions/u12/webgoat/xss/l6.png",
+    "solutions/u12/webgoat/xss/l9.png",
     "solutions/u2/a1.html",
     "solutions/u2/a2.html",
     "solutions/u2/a3_flexbox.html",
@@ -151,8 +198,6 @@ const staticFiles = [
     "solutions/u7/merge_streams.js",
     "solutions/u7/merge_streams_express.js",
     "solutions/u7/number_file_gen.js",
-    "solutions/u7/package-lock.json",
-    "solutions/u7/package.json",
     "solutions/u7/public/index.html",
     "solutions/u8/a1-1.html",
     "solutions/u8/a1-1.js",
@@ -186,10 +231,12 @@ const staticImports = [
     'https://cdn.skypack.dev/lit@v2.1.2',
     'https://cdn.skypack.dev/lit-element-router',
     'https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap',
-
+    'https://cdn.skypack.dev/prismjs@v1.x/themes/prism-okaidia.min.css',
+    'https://cdn.skypack.dev/prismjs@v1.x/components/prism-core.min.js'
 ];
 
 self.addEventListener('install', (event) => {
+    self.skipWaiting().then();
     event.waitUntil(
         caches.open(cacheName).then((cache) => {
             return cache.addAll([
@@ -198,7 +245,22 @@ self.addEventListener('install', (event) => {
             ])
         })
     )
-})
+});
+
+self.addEventListener('activate', function(e) {
+    e.waitUntil(
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(localCacheName) {
+                    if (localCacheName !== cacheName) {
+                        console.log('deleting', localCacheName);
+                        return caches.delete(localCacheName);
+                    }
+                })
+            );
+        })
+    );
+});
 
 self.addEventListener('fetch', (event) => {
     event.respondWith(
