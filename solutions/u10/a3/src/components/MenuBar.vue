@@ -1,6 +1,6 @@
 <template>
   <nav :class="direction==='vertical' ? 'vertical' : 'horizontal'">
-    <a href="#" v-for="(item, i) in menuItems" :key="i" @click="e => open(e, item, i)" :class="activeIndex === i ? 'active': ''">{{item.label}}</a>
+    <a href="#" v-for="(item, i) in menuItems" :key="i" @click="e => open(e, item)" :class="activeIndex === i ? 'active': ''">{{item.label}}</a>
   </nav>
 </template>
 
@@ -9,17 +9,15 @@ export default {
   name: 'MenuBar',
   props: {
     direction: String,
-    menuItems: Array
-  },
-  data() {
-    return {
-      activeIndex: 0
-    }
+    menuItems: Array,
+    activeIndex: Number
   },
   methods: {
-    open(event, item, i) {
+    open(event, item) {
       event.preventDefault();
-      this.activeIndex = i;
+      history.pushState({
+        route: item.route
+      }, item.route, "#");
       document.dispatchEvent(new CustomEvent('updateRoute', {
         route: item.route
       }));
