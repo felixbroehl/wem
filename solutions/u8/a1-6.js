@@ -1,5 +1,12 @@
 import {html, css, LitElement} from 'https://cdn.skypack.dev/lit@v2.1.2';
 
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
 export class CalligraphyEditor extends LitElement {
     static styles = css`
         svg {
@@ -14,19 +21,17 @@ export class CalligraphyEditor extends LitElement {
     `;
 
     static properties = {
-        lastPoint: {type: Object},
-        pointsOffset1: {type: Array},
-        pointsOffset2: {type: Array},
-        lastTime: {type: Number},
-        drawing: {type: Boolean},
-        path: {type: Object}
+        _lastPoint: {type: Object},
+        _pointsOffset: {type: Array},
+        _lastTime: {type: Number},
+        _drawing: {type: Boolean},
+        _path: {type: Object}
     };
 
     constructor() {
         super();
-        this.pointsOffset1 = [];
-        this.pointsOffset2 = [];
-        this.drawing = false;
+        this._pointsOffset = [];
+        this._drawing = false;
     }
 
     render() {
@@ -34,12 +39,13 @@ export class CalligraphyEditor extends LitElement {
     }
 
     mouseDown() {
-        this.path = this.addPath();
-        this.drawing = true;
+        this._path = this.addPath();
+        this._drawing = true;
     }
 
+    // create a path everytime mouse is down
     mouseMove(e) {
-        if (this.drawing) {
+        if (this._drawing) {
             this.draw(e);
         }
     }
@@ -52,66 +58,63 @@ export class CalligraphyEditor extends LitElement {
         return path;
     }
 
+    // reset everytime mouse is up
     mouseUp() {
-        this.drawing = false;
-        this.lastPoint = undefined;
-        this.pointsOffset1 = [];
-        this.pointsOffset2 = [];
-        this.lastTime = undefined;
+        this._drawing = false;
+        this._lastPoint = undefined;
+        this._pointsOffset = [];
+        this._lastTime = undefined;
     }
 
     draw(e) {
-        const point = this.point(e.offsetX, e.offsetY);
+        const point = new Point(e.offsetX, e.offsetY);
         const time = (new Date()).getMilliseconds();
 
-        if (this.lastPoint) {
-            const length = Math.sqrt(Math.pow(point.x - this.lastPoint.x, 2) + Math.pow(point.y - this.lastPoint.y, 2));
-            const timeTraveled = time - this.lastTime;
+        if (this._lastPoint) {
+            const length = Math.sqrt(Math.pow(point.x - this._lastPoint.x, 2) + Math.pow(point.y - this._lastPoint.y, 2)); //√a²+b²
+            const timeTraveled = time - this._lastTime;
             const width = Math.min(Math.max(timeTraveled/length*3, 1), 15);
 
             if (length > 3) {
-                const calcPoints = this.getPointOffset(this.lastPoint, point, width);
+                const calcPoints = this.getPointOffset(this._lastPoint, point, width);
 
                 if (calcPoints) {
-                    this.pointsOffset1.push(calcPoints[0]);
-                    this.pointsOffset2.unshift(calcPoints[1]);
+                    this._pointsOffset.push(calcPoints[0]); // add -90deg point at arrays end
+                    this._pointsOffset.unshift(calcPoints[1]); // add 90deg point at arrays end
 
-                    this.path.setAttribute('d', this.getPointsString(this.pointsOffset1.concat(this.pointsOffset2)));
+                    // set path
+                    this._path.setAttribute('d', this.getPointsString(this._pointsOffset));
                 }
 
-                this.lastPoint = point;
+                this._lastPoint = point;
             }
         } else {
-            this.lastPoint = point;
+            this._lastPoint = point;
         }
 
-        this.lastTime = time;
+        this._lastTime = time;
     }
 
-    point(x,y) {
-        return {
-            x: x,
-            y: y
-        };
-    }
+    // Returns two points from point b which are delta away
+    // and are 90deg and -90deg positioned to the angle between points b and a
+    getPointOffset(a,b, delta) {
+        const angle = Math.atan2(b.y - a.y, b.x - a.x); // get the angle between points b and a
 
-    getPointOffset(a, b, delta) {
-        const angle = Math.atan2(b.y - a.y, b.x - a.x);
-
-        const calc = (r, x, y, angle) => {
-            return this.point(r * Math.cos(angle) + x, r * Math.sin(angle) + y);
+        const calc = (r, x, y, angle) => { // Creates a new point from x with a angle and a radius
+            return new Point(r * Math.cos(angle) + x, r * Math.sin(angle) + y);
         }
 
-        let point1 = calc(delta, b.x, b.y, angle - (Math.PI/2));
-        let point2 = calc(delta, b.x, b.y, angle + (Math.PI/2));
+        let point1 = calc(delta, b.x, b.y, angle - (Math.PI/2)); // point -90deg
+        let point2 = calc(delta, b.x, b.y, angle + (Math.PI/2)); // point 90deg
 
-        if (isNaN(point1.x) || isNaN(point1.y) || isNaN(point2.x) || isNaN(point2.y)) {
+        if (isNaN(point1.x) || isNaN(point1.y) || isNaN(point2.x) || isNaN(point2.y)) { // return null if calculation failed
             return null;
         }
 
-        return [point1, point2];
+        return [point1, point2]; //return the new offset points
     }
 
+    // converts points array to string
     getPointsString(arr) {
         return 'M' + arr.map(item => item.x + ',' + item.y).join(' ') + ' Z';
     }

@@ -4,7 +4,7 @@ export class ExcelEditor extends LitElement {
     static styles = css`
         @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
 
-        body {
+        :host {
             font-family: 'Rubik', sans-serif;
         }
         

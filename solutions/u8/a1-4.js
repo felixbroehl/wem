@@ -4,6 +4,7 @@ export class BarGraph extends LitElement {
     static styles = css`
         svg {
             font-family: 'Rubik', sans-serif;
+            max-width: 750px;
         }
         
         @keyframes rect-rise {

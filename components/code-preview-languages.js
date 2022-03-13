@@ -1,3 +1,5 @@
+// array content copied from https://github.com/PrismJS/prism/blob/master/plugins/autoloader/prism-autoloader.js
+
 export const lang_dependencies = /*dependencies_placeholder[*/{
     "javascript": "clike",
     "actionscript": "javascript",

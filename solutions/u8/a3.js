@@ -196,7 +196,6 @@ export class Navigator extends LitElement {
         if (!this.setup) {
             return '';
         }
-        console.log(this.outerKey);
         return html`
             <header>
                 <h1>Header</h1>

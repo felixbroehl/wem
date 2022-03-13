@@ -15,7 +15,7 @@ export class BezierAnimation extends LitElement {
         
         svg {
             background-color: #ccc;
-            margin: 1em;
+            margin: 0.8em;
         }
     `;
 
