@@ -10,6 +10,7 @@ import './run-code.js';
 import './inline-code-preview.js';
 import './answer-block.js';
 import './open-solution-button.js';
+import './about.js';
 import {nameToUrlPart} from "./utils.js";
 import {chapters} from "./chapters.js";
 
@@ -223,6 +224,11 @@ class App extends router(LitElement) {
             data: { component: 'home' }
         },
         {
+            name: 'about',
+            pattern: 'wem/about',
+            data: { component: 'about' }
+        },
+        {
             name: 'not-found',
             pattern: '*',
             data: { component: 'not-found' }
@@ -250,6 +256,8 @@ class App extends router(LitElement) {
             return html`<wem-home></wem-home>`;
         } else if (this.routeData && this.routeData.component === 'chapter') {
             return html`<wem-chapter .chapter=${this.routeData.attributes.chapter}></wem-chapter>`;
+        } else if (this.routeData && this.routeData.component === 'about') {
+            return html`<wem-about></wem-about>`;
         } else if (this.routeData && this.routeData.component === 'not-found') {
             return html`<div id="page-not-found">
                 <h1>404</h1>
@@ -274,7 +282,7 @@ class App extends router(LitElement) {
                     <wem-link href="/wem/${nameToUrlPart(chapter.name)}" @click="${this.hideMenu}"><div class="item ${this.route === 'u'+(i+1) ? 'active' : ''}">${i+1}. ${chapter.name}</div></wem-link>
                 `)}
                 <wem-link href="https://github.com/felixbroehl/wem" @click="${this.hideMenu}"><div class="item github-item">Open on Github</div></wem-link>
-                <wem-link href="/wem/credits" @click="${this.hideMenu}"><div class="item ${this.route === 'credits' ? 'active' : ''}">Credits</div></wem-link>
+                <wem-link href="/wem/about" @click="${this.hideMenu}"><div class="item ${this.route === 'about' ? 'active' : ''}">Über</div></wem-link>
             </nav>
         `;
     }

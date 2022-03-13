@@ -4,7 +4,7 @@ fetch('/wem/solutions/u11/a1/main.wasm').then(response =>
     instance = results.instance;
     for (let a = 1; a <= 100; a++) {
         for (let b = 1; b <= 100; b++) {
-            console.log('ggT for ' + a + ' and ' + b + ': ' + instance.exports.ggT(12,8));
+            console.log('ggT for ' + a + ' and ' + b + ': ' + instance.exports.ggT(a,b));
         }
     }
 }).catch(console.error);

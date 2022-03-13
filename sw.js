@@ -1,4 +1,4 @@
-const cacheName = 'wem-v22';
+const cacheName = 'wem-v23';
 
 const staticFiles = [
     "404.html",
@@ -26,6 +26,7 @@ const staticFiles = [
     "assets/manifest/icon-384x384.png",
     "assets/manifest/icon-512x512.png",
     "assets/manifest/manifest.json",
+    "components/about.js",
     "components/answer-block.js",
     "components/app.js",
     "components/chapter.js",

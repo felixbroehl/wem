@@ -48,7 +48,7 @@ class LogoAnimation extends LitElement {
     render() {
         return html`
             ${this.renderSVG()}
-            <h1 id="wem-subtitle">Webengineering<br>Master Computer Science</h1>
+            <h1 id="wem-subtitle">Web Engineering<br>Master Computer Science</h1>
         `;
     }
     renderSVG() {
