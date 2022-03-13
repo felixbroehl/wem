@@ -29,7 +29,7 @@ class About extends LitElement {
     }
     render() {
         return html`
-            <h1>Über dies App</h1>
+            <h1>Über diese App</h1>
             <p>Diese App ist im Rahmen des Fachs Web Engineering im Master of Computer Science der Hochschule Bonn-Rhein-Sieg entstanden.</p>
             <h2>git-Statistik</h2>
             <p><inline-code-preview>git fame</inline-code-preview></p>

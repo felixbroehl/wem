@@ -282,7 +282,7 @@ class App extends router(LitElement) {
                     <wem-link href="/wem/${nameToUrlPart(chapter.name)}" @click="${this.hideMenu}"><div class="item ${this.route === 'u'+(i+1) ? 'active' : ''}">${i+1}. ${chapter.name}</div></wem-link>
                 `)}
                 <wem-link href="https://github.com/felixbroehl/wem" @click="${this.hideMenu}"><div class="item github-item">Open on Github</div></wem-link>
-                <wem-link href="/wem/about" @click="${this.hideMenu}"><div class="item ${this.route === 'about' ? 'active' : ''}">Über</div></wem-link>
+                <wem-link href="/wem/about" @click="${this.hideMenu}"><div class="item ${this.route === 'about' ? 'active' : ''}">Über diese App</div></wem-link>
             </nav>
         `;
     }
