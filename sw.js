@@ -1,4 +1,4 @@
-const cacheName = 'wem-v21';
+const cacheName = 'wem-v22';
 
 const staticFiles = [
     "404.html",
@@ -67,6 +67,20 @@ const staticFiles = [
     "solutions/u10/a2/dist/js/chunk-vendors.74a47ef3.js.map",
     "solutions/u10/a2/src/App.vue",
     "solutions/u10/a2/src/components/MenuBar.vue",
+    "solutions/u10/a3/dist/favicon.ico",
+    "solutions/u10/a3/dist/index.html",
+    "solutions/u10/a3/dist/assets/a3_contents.json",
+    "solutions/u10/a3/dist/css/app.2191acb3.css",
+    "solutions/u10/a3/dist/js/app.66866f56.js",
+    "solutions/u10/a3/dist/js/app.66866f56.js.map",
+    "solutions/u10/a3/dist/js/chunk-vendors.9d8f36a5.js",
+    "solutions/u10/a3/dist/js/chunk-vendors.9d8f36a5.js.map",
+    "solutions/u10/a3/public/index.html",
+    "solutions/u10/a3/public/assets/a3_contents.json",
+    "solutions/u10/a3/src/App.vue",
+    "solutions/u10/a3/src/main.js",
+    "solutions/u10/a3/src/components/MenuBar.vue",
+    "solutions/u10/a3/src/components/Navigator.vue",
     "solutions/u11/a1.js",
     "solutions/u11/a1.wat",
     "solutions/u11/a2.c",

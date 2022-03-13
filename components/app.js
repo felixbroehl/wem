@@ -120,6 +120,7 @@ class App extends router(LitElement) {
         
         #logo img {
             width: 100%;
+            display: block;
         }
         
         @media (max-width: 1450px) {
@@ -129,6 +130,12 @@ class App extends router(LitElement) {
         }
         
         @media (max-width: 1050px) {
+            #logo {
+                width: 150px;
+                margin-left: 50%;
+                transform: translateX(-50%);
+            }
+            
             #logo img {
                 height: 60px;
             }
@@ -266,8 +273,8 @@ class App extends router(LitElement) {
                 ${chapters.map((chapter, i) => html`
                     <wem-link href="/wem/${nameToUrlPart(chapter.name)}" @click="${this.hideMenu}"><div class="item ${this.route === 'u'+(i+1) ? 'active' : ''}">${i+1}. ${chapter.name}</div></wem-link>
                 `)}
-                <wem-link href="https://github.com/felixbroehl/wem" id="logo" @click="${this.hideMenu}"><div class="item github-item">Open on Github</div></wem-link>
-                <wem-link href="/wem/credits" id="logo" @click="${this.hideMenu}"><div class="item ${this.route === 'credits' ? 'active' : ''}">Credits</div></wem-link>
+                <wem-link href="https://github.com/felixbroehl/wem" @click="${this.hideMenu}"><div class="item github-item">Open on Github</div></wem-link>
+                <wem-link href="/wem/credits" @click="${this.hideMenu}"><div class="item ${this.route === 'credits' ? 'active' : ''}">Credits</div></wem-link>
             </nav>
         `;
     }
