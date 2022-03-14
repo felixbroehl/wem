@@ -1,6 +1,10 @@
 import { html, css, LitElement } from 'https://cdn.skypack.dev/lit@v2.1.2';
 import {chapters} from "./chapters.js";
 import {nameToUrlPart} from "./utils.js";
+import './inline-code-preview.js'
+import './code-preview.js'
+import './run-code.js'
+import './open-solution-button.js'
 
 class Chapter extends LitElement {
     static styles = css`

@@ -1,4 +1,5 @@
 import {html, css, LitElement} from 'https://cdn.skypack.dev/lit@v2.1.2';
+import './code-preview.js'
 
 export class RunCode extends LitElement {
     static styles = css`
