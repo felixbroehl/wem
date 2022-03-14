@@ -1,0 +1,31 @@
+{
+  "name": "wem",
+  "version": "1.0.0",
+  "description": "<img src=\"assets/img/logo.svg\" alt=\"logo\" style=\"zoom:300%;\" />",
+  "main": "listFiles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -o storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felixbroehl/wem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felixbroehl/wem/issues"
+  },
+  "homepage": "https://github.com/felixbroehl/wem#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/html": "^6.4.19",
+    "babel-loader": "^8.2.3"
+  },
+  "dependencies": {}
+}
